@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3479b52f1c209f373130907198cea81",
+    "content-hash": "4514056ff78f6d93b0c15fa28955d43a",
     "packages": [
         {
             "name": "composer/installers",
@@ -888,15 +888,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "12.9.3",
+            "version": "13.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/12.9.3"
+                "reference": "tags/13.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.12.9.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.13.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -978,15 +978,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "21.9.1",
+            "version": "22.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/21.9.1"
+                "reference": "tags/22.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.21.9.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.22.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1925,7 +1925,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wpackagist-plugin/jetpack": 15,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
