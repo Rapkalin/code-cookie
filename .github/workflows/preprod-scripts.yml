@@ -15,6 +15,6 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
-            cd ~/preprod-code/shared/scripts
+            cd ~/preprod-codecookie/shared/scripts
             ~/bin/php import-prod-db-for-preprod.php 
             ~/bin/php sync-uploads.php

@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
-          script: "[ ! -d ~/code/website ] || rm -rf ~/code/old_website ~/code/website/vendor ~/code/website/wordpress-core && mv -fu ~/code/website ~/code/old_website"
+          script: "[ ! -d ~/prod-codecookie/website ] || rm -rf ~/prod-codecookie/old_website ~/prod-codecookie/website/vendor ~/prod-codecookie/website/wordpress-core && mv -fu ~/prod-codecookie/website ~/prod-codecookie/old_website"
 
       - name: checkout code
         uses: actions/checkout@v3
@@ -85,9 +85,9 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
-            ln -nsrf ~/code/shared/.env ~/code/website/.env
-            ln -nsrf ~/code/shared/uploads ~/code/website/app/uploads
-            ln -nsrf ~/code/shared/cache ~/code/website/app/cache
-            ln -nsrf ~/code/shared/w3tc-config ~/code/website/app/w3tc-config
+            ln -nsrf ~/prod-codecookie/shared/.env ~/prod-codecookie/website/.env
+            ln -nsrf ~/prod-codecookie/shared/uploads ~/prod-codecookie/website/app/uploads
+            ln -nsrf ~/prod-codecookie/shared/cache ~/prod-codecookie/website/app/cache
+            ln -nsrf ~/prod-codecookie/shared/w3tc-config ~/prod-codecookie/website/app/w3tc-config
             rm ~/code/website/.htaccess
-            ln -nsrf ~/code/shared/.htaccess ~/code/website/.htaccess
+            ln -nsrf ~/prod-codecookie/shared/.htaccess ~/prod-codecookie/website/.htaccess

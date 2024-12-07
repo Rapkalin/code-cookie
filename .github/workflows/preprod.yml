@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
-          script: "[ ! -d ~/preprod-code/website ] || rm -rf ~/preprod-code/website/vendor ~/preprod-code/website/wordpress-core"
+          script: "[ ! -d ~/preprod-codecookie/website ] || rm -rf ~/preprod-codecookie/website/vendor ~/preprod-codecookie/website/wordpress-core"
 
       - name: checkout preprod-code
         uses: actions/checkout@v3
@@ -85,10 +85,10 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
-            ln -nsrf ~/preprod-code/shared/.env ~/preprod-code/website/.env
-            ln -nsrf ~/preprod-code/shared/uploads ~/preprod-code/website/app/uploads
-            ln -nsrf ~/preprod-code/shared/cache ~/preprod-code/website/app/cache
-            ln -nsrf ~/preprod-code/shared/w3tc-config ~/preprod-code/website/app/w3tc-config
-            rm ~/preprod-code/website/.htaccess
-            ln -nsrf ~/preprod-code/shared/.htaccess ~/preprod-code/website/.htaccess
-            ln -nsrf ~/preprod-code/shared/.htpasswd ~/preprod-code/website/.htpasswd
+            ln -nsrf ~/preprod-codecookie/shared/.env ~/preprod-codecookie/website/.env
+            ln -nsrf ~/preprod-codecookie/shared/uploads ~/preprod-codecookie/website/app/uploads
+            ln -nsrf ~/preprod-codecookie/shared/cache ~/preprod-codecookie/website/app/cache
+            ln -nsrf ~/preprod-codecookie/shared/w3tc-config ~/preprod-codecookie/website/app/w3tc-config
+            rm ~/preprod-codecookie/website/.htaccess
+            ln -nsrf ~/preprod-codecookie/shared/.htaccess ~/preprod-codecookie/website/.htaccess
+            ln -nsrf ~/preprod-codecookie/shared/.htpasswd ~/preprod-codecookie/website/.htpasswd
