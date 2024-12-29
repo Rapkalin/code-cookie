@@ -29,7 +29,7 @@
         "composer/installers": "~1.12",
         "vlucas/phpdotenv": "^5.5",
 
-        "wpackagist-theme/newsmatic":"1.2.14",
+        "wpackagist-theme/vilva":"1.2.7",
 
         "wpackagist-plugin/w3-total-cache":"^2.4",
         "wpackagist-plugin/advanced-accordion-block":"^4.6",
