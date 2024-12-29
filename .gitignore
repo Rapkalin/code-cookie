@@ -27,7 +27,7 @@ website/app/*
 !website/app/themes/
 !website/app/advanced-cache.php
 !website/app/object-cache.php
-website/app/themes/newsmatic
+website/app/themes/vilva
 
 #Plugins to ignore
 !website/app/plugins/
