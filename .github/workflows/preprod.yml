@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
-          script: "[ ! -d ~/preprod-codecookie/website ] || rm -rf ~/preprod-codecookie/website/vendor ~/preprod-codecookie/website/wordpress-core"
+          script: "[ ! -d ~/preprod-codecookie/website ] || { [ -d ~/preprod-codecookie/old_website ] && rm -rf ~/preprod-codecookie/old_website/* ; } && mv -fu ~/preprod-codecookie/website/* ~/preprod-codecookie/old_website && rm -rf ~/preprod-codecookie/website/"
 
       - name: checkout preprod-code
         uses: actions/checkout@v3
