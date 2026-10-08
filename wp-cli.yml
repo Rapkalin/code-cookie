@@ -1,0 +1,3 @@
+path: website/wordpress-core
+server:
+  docroot: website

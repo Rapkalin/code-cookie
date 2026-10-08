@@ -1,0 +1,126 @@
+# =============================================================================
+# code-cookie — Environnement de développement Docker (Apache + MySQL 8.4)
+# Compose v2 (la clé "version:" est obsolète, volontairement omise)
+#
+# Services :
+#   php        : PHP + Apache, sert le docroot website/
+#   db         : MySQL 8.4 (LTS)
+#   phpmyadmin : interface base de données
+#   mailpit    : capture les mails sortants — AUCUN mail ne part de la machine
+#
+# URLs (ports pilotés par le .env, choisis libres sur ce poste) :
+#   Front       http://localhost:8030
+#   Admin       http://localhost:8030/wordpress-core/wp-admin
+#   phpMyAdmin  http://localhost:8031
+#   Mailpit     http://localhost:8035
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # PHP + Apache. L'entrypoint attend la base puis lance bin/init.sh
+  # (installation ou import de dump, idempotent).
+  # ---------------------------------------------------------------------------
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      args:
+        # Voir l'en-tête du Dockerfile : 8.3 tant que le cœur est en 6.7.1.
+        PHP_VERSION: ${PHP_VERSION:-8.3}
+    image: code-cookie-app:local
+    container_name: code-cookie-php
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8030}:80"
+    working_dir: /var/www/html
+    volumes:
+      # Bind mount du projet complet : le code édité sur l'hôte est servi
+      # immédiatement, `composer install` écrit dans website/vendor côté hôte,
+      # et les médias déposés dans website/app/uploads sont visibles des deux
+      # côtés (c'est là qu'atterrit scripts/sync-uploads.php).
+      - ./:/var/www/html
+
+    # Pas de bloc `environment:` : toute la configuration vit dans le .env
+    # racine, lu par phpdotenv (PHP) et sourcé par bin/init.sh (shell).
+    # Dupliquer ici créerait deux sources de vérité qui divergeraient.
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - code-cookie-network
+
+  # ---------------------------------------------------------------------------
+  # MySQL 8.4 (LTS)
+  # L'authentification par défaut est caching_sha2_password : PHP la gère
+  # nativement, et l'entrypoint teste la connexion via mysqli — le même chemin
+  # que WordPress — plutôt qu'avec un client externe.
+  # ---------------------------------------------------------------------------
+  db:
+    image: mysql:8.4
+    container_name: code-cookie-db
+    restart: unless-stopped
+    command:
+      # utf8mb4 partout : emojis et caractères sur 4 octets dans les articles.
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME:-codecookie}
+      MYSQL_USER: ${DATABASE_USER:-codecookie}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD:-codecookie}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD:-root}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      # 3308 : 3306 (MySQL local) et 3307 (LCDS) sont déjà pris sur ce poste.
+      - "${DATABASE_PORT:-3308}:3306"
+    healthcheck:
+      # $$ échappe le $ pour Compose : la variable est résolue DANS le conteneur.
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      start_period: 90s
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - code-cookie-network
+
+  # ---------------------------------------------------------------------------
+  # phpMyAdmin — UPLOAD_LIMIT relevé pour pouvoir importer un dump du blog.
+  # ---------------------------------------------------------------------------
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: code-cookie-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "${PMA_PORT:-8031}:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 512M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - code-cookie-network
+
+  # ---------------------------------------------------------------------------
+  # Mailpit — relais SMTP local + webmail.
+  # Garde-fou : un dump de production contient de VRAIES adresses d'abonnés.
+  # Sans ce service, une extension qui poste un mail depuis le poste de dev leur
+  # écrirait pour de bon.
+  # ---------------------------------------------------------------------------
+  mailpit:
+    image: axllent/mailpit
+    container_name: code-cookie-mailpit
+    restart: unless-stopped
+    ports:
+      - "${MAILPIT_PORT:-8035}:8025"
+    networks:
+      - code-cookie-network
+
+# -----------------------------------------------------------------------------
+volumes:
+  db_data:
+
+networks:
+  code-cookie-network:
+    driver: bridge

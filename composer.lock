@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b4014a14edd9594814c065ed4c04f89",
+    "content-hash": "b3479b52f1c209f373130907198cea81",
     "packages": [
         {
             "name": "composer/installers",
@@ -1036,22 +1036,22 @@
             "homepage": "https://wordpress.org/plugins/wp-ulike/"
         },
         {
-            "name": "wpackagist-theme/vilva",
-            "version": "1.2.7",
+            "name": "wpackagist-theme/newsmatic",
+            "version": "1.2.14",
             "source": {
                 "type": "svn",
-                "url": "https://themes.svn.wordpress.org/vilva/",
-                "reference": "1.2.7"
+                "url": "https://themes.svn.wordpress.org/newsmatic/",
+                "reference": "1.2.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/vilva.1.2.7.zip"
+                "url": "https://downloads.wordpress.org/theme/newsmatic.1.2.14.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/vilva/"
+            "homepage": "https://wordpress.org/themes/newsmatic/"
         }
     ],
     "packages-dev": [
@@ -2066,8 +2066,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wpackagist-plugin/jetpack": 15,
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "wpackagist-plugin/jetpack": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,
@@ -2076,6 +2076,6 @@
         "ext-dom": "*",
         "ext-libxml": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

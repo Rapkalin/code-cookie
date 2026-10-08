@@ -1,115 +1,155 @@
 <?php
-/** Enable W3 Total Cache */
-define('WP_CACHE', true); // Added by W3 Total Cache
 
 /**
- * The base configuration for WordPress
+ * WordPress configuration.
  *
- * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the web site, you can copy this file to "wp-config.php"
- * and fill in the values.
+ * Every value comes from the .env file: nothing environment-specific and no
+ * secret belongs in this file, which is versioned.
  *
- * This file contains the following configurations:
- *
- * * Database settings
- * * Secret keys
- * * Database table prefix
- * * ABSPATH
- *
- * @link https://wordpress.org/documentation/article/editing-wp-config-php/
- *
- * @package WordPress
+ * This file must live next to the docroot: WordPress only looks in its own
+ * directory or one directory up.
  */
 
 define('DIR_VENDOR', __DIR__ . '/vendor/');
 
-// Autoloader
-if (file_exists(DIR_VENDOR . 'autoload.php')) {
-    require_once(DIR_VENDOR . 'autoload.php');
+if (! file_exists(DIR_VENDOR . 'autoload.php')) {
+    exit('Composer dependencies are missing. Run: docker compose exec php composer install');
 }
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$env = $dotenv->load();
-
-// ** Database settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define( 'DB_NAME', $env['DATABASE_NAME'] );
-
-/** Database username */
-define( 'DB_USER', $env['DATABASE_USER'] );
-
-/** Database password */
-define( 'DB_PASSWORD', $env['DATABASE_PASSWORD'] );
-
-/** Database hostname */
-define( 'DB_HOST', $env['DATABASE_HOST'] );
-
-/** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
-
-/** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
-
-/**#@+
- * Authentication unique keys and salts.
- *
- * Change these to different unique phrases! You can generate these using
- * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
- *
- * You can change these at any point in time to invalidate all existing cookies.
- * This will force all users to have to log in again.
- *
- * @since 2.6.0
- */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
-
-/**#@-*/
+require_once DIR_VENDOR . 'autoload.php';
 
 /**
- * WordPress database table prefix.
- *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
+ * The .env lives in the docroot on the server (website/.env, a symlink to
+ * shared/.env, which survives deployments) and at the repository root in local
+ * development — there is no shared/ on a dev machine.
  */
-$table_prefix = 'wp_';
+$env_dir = file_exists(__DIR__ . '/.env') ? __DIR__ : dirname(__DIR__);
+
+$dotenv = Dotenv\Dotenv::createImmutable($env_dir);
+$dotenv->load();
+$dotenv->required(['WP_HOME', 'DATABASE_NAME', 'DATABASE_USER', 'DATABASE_PASSWORD']);
 
 /**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- *
- * For information on other constants that can be used for debugging,
- * visit the documentation.
- *
- * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
+ * Reads an optional variable, since required() already guards the mandatory
+ * ones. Empty strings count as absent: a variable left blank in the .env means
+ * "not set", never "set to nothing".
  */
-define( 'WP_DEBUG', false );
+function code_cookie_env(string $name, mixed $default = null): mixed
+{
+    $value = $_ENV[$name] ?? null;
 
-/* Add any custom values between this line and the "stop editing" line. */
+    if ($value === null || $value === '') {
+        return $default;
+    }
 
-/** Define a custom path to the config.php file */
-if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', __DIR__ . 'wp-config.php');
+    return match (strtolower((string) $value)) {
+        'true' => true,
+        'false' => false,
+        default => $value,
+    };
 }
 
-/** Define a custom default theme */
-define( 'WP_DEFAULT_THEME', 'newsmatic' );
+/**
+ * URLs. A single value in the .env drives all three: a trailing slash left in
+ * WP_HOME would otherwise produce double slashes in every asset URL.
+ */
+define('WP_HOME', rtrim((string) code_cookie_env('WP_HOME'), '/'));
+define('WP_SITEURL', WP_HOME . '/wordpress-core');
 
-/** Define a custom content directory */
-define ('WP_CONTENT_DIR', __DIR__ . '/app');
-define ('WP_CONTENT_URL', $env['WP_CONTENT_URL'] . 'app');
-define( 'WP_SITEURL',  $env['WP_SITEURL'] . 'wordpress-core/');
+/**
+ * Custom content directory (replaces wp-content).
+ */
+define('WP_CONTENT_DIR', __DIR__ . '/app');
+define('WP_CONTENT_URL', WP_HOME . '/app');
 
-/* That's all, stop editing! Happy publishing. */
+/**
+ * Database.
+ */
+if (code_cookie_env('DATABASE_SSL') === true) {
+    define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+}
 
-/** Sets up WordPress vars and included files. */
+define('DB_NAME', code_cookie_env('DATABASE_NAME'));
+define('DB_USER', code_cookie_env('DATABASE_USER'));
+define('DB_PASSWORD', code_cookie_env('DATABASE_PASSWORD'));
+define('DB_HOST', code_cookie_env('DATABASE_HOST', 'localhost'));
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+$table_prefix = (string) code_cookie_env('DATABASE_PREFIX', 'wp_');
+
+/**
+ * Authentication keys and salts: one set per environment, never committed.
+ * bin/init.sh generates them on first start; in production, generate a set at
+ * https://roots.io/salts.html
+ */
+foreach ([
+    'AUTH_KEY',
+    'SECURE_AUTH_KEY',
+    'LOGGED_IN_KEY',
+    'NONCE_KEY',
+    'AUTH_SALT',
+    'SECURE_AUTH_SALT',
+    'LOGGED_IN_SALT',
+    'NONCE_SALT',
+] as $salt) {
+    define($salt, (string) code_cookie_env($salt, 'put-a-real-salt-in-the-env'));
+}
+
+/**
+ * Active theme of record. The database is what WordPress actually obeys; this
+ * constant is the fallback it falls back to, and the value bin/init.sh
+ * reconciles an imported dump against — the production dump still names a theme
+ * that no longer ships with this repository.
+ */
+define('WP_DEFAULT_THEME', 'newsmatic-child');
+
+/**
+ * Environment.
+ */
+define('WP_ENV', (string) code_cookie_env('WP_ENV', 'production'));
+define('WP_ENVIRONMENT_TYPE', WP_ENV === 'development' ? 'local' : WP_ENV);
+
+/**
+ * Full-page cache (W3 Total Cache). The advanced-cache.php drop-in is only
+ * loaded when this constant is true, which is what keeps the plugin out of the
+ * way in local development.
+ */
+
+define('DISABLE_WP_CRON', code_cookie_env('DISABLE_WP_CRON', false) === true);
+
+/**
+ * Hardening. Updates go through Composer and Git, never through the admin: a
+ * compromised account must not be able to write PHP to the server.
+ *
+ * DISALLOW_FILE_MODS is deliberately NOT set: W3 Total Cache writes its own
+ * drop-ins and its w3tc-config directory at activation, and would fail
+ * silently without write access.
+ */
+define('DISALLOW_FILE_EDIT', true);
+define('AUTOMATIC_UPDATER_DISABLED', true);
+
+/**
+ * Debugging. Errors are never displayed: a stack trace tells an attacker the
+ * absolute paths of the server.
+ */
+define('WP_DEBUG', WP_ENV !== 'production' && code_cookie_env('WP_DEBUG', false) === true);
+define('WP_DEBUG_DISPLAY', false);
+define('WP_DEBUG_LOG', WP_DEBUG);
+define('SCRIPT_DEBUG', false);
+ini_set('display_errors', '0');
+
+/**
+ * Lets WordPress detect HTTPS behind a reverse proxy or load balancer.
+ *
+ * @see https://developer.wordpress.org/reference/functions/is_ssl/
+ */
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
+if (! defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/wordpress-core/');
+}
+
 require_once ABSPATH . 'wp-settings.php';

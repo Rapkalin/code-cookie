@@ -12,7 +12,10 @@ if (PHP_SAPI !== 'cli') {
 $start = microtime(true);
 
 // Load .env data
-$dotenv = Dotenv::createUnsafeImmutable(__DIR__.'/../website', '.env');
+// The .env lives in the docroot on the server (a symlink to shared/.env) and at
+// the repository root in local development.
+$envDir = file_exists(__DIR__ . '/../website/.env') ? __DIR__ . '/../website' : __DIR__ . '/..';
+$dotenv = Dotenv::createUnsafeImmutable($envDir, '.env');
 $dotenv->safeLoad();
 
 // Copy uploads folder on current machine

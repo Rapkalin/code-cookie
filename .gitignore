@@ -25,9 +25,10 @@ wordpress-core/
 website/app/*
 !website/app/languages
 !website/app/themes/
+!website/app/mu-plugins/
 !website/app/advanced-cache.php
 !website/app/object-cache.php
-website/app/themes/vilva
+website/app/themes/newsmatic
 
 #Plugins to ignore
 !website/app/plugins/
@@ -49,7 +50,10 @@ website/app/plugins/translatepress-multilingual
 
 
 # Global gitignore setup
-/composer.lock
+# composer.lock EST versionné : il fige les versions déployées, et c'est lui que
+# la CI envoie à Watcha. L'ignorer rendrait les déploiements non reproductibles.
+.env
+.env.local
 website/.env
 .bundle/
 *.retry
@@ -64,3 +68,6 @@ exports/*
 
 # Node modules
 node_modules/
+
+# Docker : le .env racine est ignoré ci-dessus, l'exemple est versionné.
+!.env.example

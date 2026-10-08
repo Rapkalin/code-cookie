@@ -1,0 +1,5 @@
+# Le code n'est pas copié dans l'image (bind mount) : seul docker/ est lu au
+# build. Tout exclure d'abord, puis réautoriser, garde le contexte minuscule et
+# empêche un dump ou un .env d'y entrer par accident.
+*
+!docker/
