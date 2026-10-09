@@ -17,7 +17,7 @@
         </div>
 
         <?php foreach (code_cookie_footer_columns() as $column) : ?>
-            <div class="cc-footer__col">
+            <div class="cc-footer__col <?php echo esc_attr($column['flavour']->modifier('cc-footer__col')); ?>">
                 <h2 class="cc-footer__col-title"><?php echo esc_html($column['title']); ?></h2>
                 <ul class="cc-footer__links">
                     <?php foreach ($column['links'] as $link) : ?>

@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * @return array<int, array{title: string, links: array<int, array{label: string, url: string}>}>
+ * @return array<int, array{title: string, flavour: Flavour, links: array<int, array{label: string, url: string}>}>
  */
 function code_cookie_footer_columns(): array
 {
@@ -49,7 +49,17 @@ function code_cookie_footer_columns(): array
         }
     }
 
-    return array_values($columns);
+    // The colour is assigned here, not by a CSS :nth-child that also counts the
+    // brand block sitting in the same row.
+    // Order taken from the mockup: the first column is caramel, the second mint.
+    $palette = [Flavour::Caramel, Flavour::Mint, Flavour::Earth, Flavour::Orange];
+    $ordered = [];
+    foreach (array_values($columns) as $index => $column) {
+        $column['flavour'] = $palette[$index % count($palette)];
+        $ordered[] = $column;
+    }
+
+    return $ordered;
 }
 
 /**

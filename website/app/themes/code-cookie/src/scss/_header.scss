@@ -64,6 +64,16 @@
   padding: 0;
   color: var(--cc-caramel);
 
-  /* The bite is punched with the surrounding surface, so it follows the scheme. */
-  .cc-bite { fill: var(--cc-chip); }
+  svg { width: 26px; height: 26px; }
+
+  /* The bite and the chips are punched with the button's own surface, so they
+     follow the scheme. */
+  &__bite,
+  &__chip { fill: var(--cc-chip); }
+
+  /* The icon states what you are looking at: a whole cookie in light, a bitten
+     one — the crescent moon — in dark. */
+  &__bite { display: none; }
 }
+
+[data-scheme="dark"] .cc-scheme-toggle__bite { display: inline; }

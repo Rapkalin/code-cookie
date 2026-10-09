@@ -1,3 +1,10 @@
+@use '../flavours';
+
+/* The homepage closes on the full-bleed batch band, which must touch the footer.
+   A sibling selector cannot express it: the band sits inside <main> and the
+   footer after it, so they are not siblings. */
+.home .cc-footer { margin-top: 0; }
+
 .cc-footer {
   background: var(--cc-plate);
   margin-top: 4rem;
@@ -26,10 +33,7 @@
     font-size: 1.125rem;
     font-weight: 700;
     margin: 0 0 0.8rem;
-    color: var(--cc-caramel-ink);
   }
-
-  &__col:nth-of-type(even) &__col-title { color: var(--cc-mint-ink); }
 
   &__links {
     margin: 0;
@@ -45,4 +49,8 @@
 
     p { margin: 0; padding-block: 1.25rem; font-size: 0.875rem; color: var(--cc-ink-soft); }
   }
+}
+
+@each $flavour in flavours.$names {
+  .cc-footer__col--#{$flavour} .cc-footer__col-title { color: var(--cc-#{$flavour}-ink); }
 }

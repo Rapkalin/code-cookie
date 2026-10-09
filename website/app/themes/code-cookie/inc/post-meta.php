@@ -14,8 +14,25 @@ if (!defined('ABSPATH')) {
 const CODE_COOKIE_WORDS_PER_MINUTE = 200;
 
 /**
- * The most specific category of a post: the deepest one, so "Git" wins over
- * "Articles".
+ * The taxonomy mixes subjects (Git, Backend) with reading levels under the same
+ * two parents, so a level would otherwise win the badge on sheer post count.
+ */
+const CODE_COOKIE_LEVEL_SLUGS = ['debutant', 'intermediaire', 'avance', 'notions-base'];
+
+function code_cookie_is_level(WP_Term $term): bool
+{
+    foreach (CODE_COOKIE_LEVEL_SLUGS as $slug) {
+        if (str_contains($term->slug, $slug)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * The subject of a post: the most specific category that is not a reading level,
+ * so "Backend" wins over both "Astuces" and "Débutant".
  */
 function code_cookie_topic(int $postId): ?WP_Term
 {
@@ -24,14 +41,19 @@ function code_cookie_topic(int $postId): ?WP_Term
         return null;
     }
 
+    $subjects = array_values(array_filter($terms, static fn (WP_Term $term): bool => !code_cookie_is_level($term)));
+    if ($subjects === []) {
+        return null;
+    }
+
     $best = null;
-    foreach ($terms as $term) {
+    foreach ($subjects as $term) {
         if ($term->parent !== 0 && ($best === null || $term->count > $best->count)) {
             $best = $term;
         }
     }
 
-    return $best ?? $terms[0];
+    return $best ?? $subjects[0];
 }
 
 function code_cookie_flavour(int $postId): Flavour

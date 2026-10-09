@@ -24,26 +24,30 @@ enum Flavour: string
      * Topic keyword => flavour. Matched against the term slug, so both branches
      * of the duplicated taxonomy (articles-git / astuces-git) land on the same
      * colour.
+     *
+     * ORDER MATTERS: the first match wins. Compound slugs come first, because
+     * "forum-php" also contains "php" and would otherwise be read as a backend
+     * subject instead of an event.
      */
     private const KEYWORDS = [
-        'git' => self::Caramel,
+        'forum' => self::Earth,
+        'vie-de-dev' => self::Earth,
+        'actualites' => self::Earth,
+        'interviews' => self::Earth,
+        'ecoresponsable' => self::Earth,
         'github' => self::Caramel,
+        'git' => self::Caramel,
         'basiques' => self::Caramel,
         'notions' => self::Caramel,
-        'backend' => self::Orange,
-        'php' => self::Orange,
-        'cms' => self::Orange,
-        'framework' => self::Orange,
-        'ide' => self::Orange,
         'cache' => self::Mint,
         'devops' => self::Mint,
         'securite' => self::Mint,
         'frontend' => self::Mint,
-        'ecoresponsable' => self::Earth,
-        'vie-de-dev' => self::Earth,
-        'actualites' => self::Earth,
-        'interviews' => self::Earth,
-        'forum' => self::Earth,
+        'backend' => self::Orange,
+        'cms' => self::Orange,
+        'framework' => self::Orange,
+        'ide' => self::Orange,
+        'php' => self::Orange,
     ];
 
     /**

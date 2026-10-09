@@ -1,0 +1,15 @@
+/* Article prose.
+   Links get their underline back here, and only here: the caramel contrasts
+   with the surrounding text at 1.68 in dark and 2.56 in light — far under the
+   3:1 that WCAG 1.4.1 demands when colour is the only cue. Navigation, cards
+   and buttons are standalone shapes, so they stay underline-free. */
+.entry-content {
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover,
+  a:focus-visible { text-decoration-thickness: 2px; }
+}

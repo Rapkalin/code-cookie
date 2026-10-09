@@ -40,12 +40,12 @@ function code_cookie_scheme_toggle(): void
     ?>
     <button type="button" class="cc-scheme-toggle" data-cc-scheme-toggle
             aria-label="<?php esc_attr_e('Changer de mode d’affichage', 'code-cookie'); ?>">
-        <svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
             <circle cx="22" cy="22" r="19" fill="currentColor"></circle>
-            <circle class="cc-bite" cx="38" cy="11" r="10"></circle>
-            <circle class="cc-bite" cx="15" cy="16" r="3.4"></circle>
-            <circle class="cc-bite" cx="24" cy="27" r="3.6"></circle>
-            <circle class="cc-bite" cx="14" cy="29" r="2.4"></circle>
+            <circle class="cc-scheme-toggle__bite" cx="38" cy="11" r="10"></circle>
+            <circle class="cc-scheme-toggle__chip" cx="15" cy="16" r="3.4"></circle>
+            <circle class="cc-scheme-toggle__chip" cx="24" cy="27" r="3.6"></circle>
+            <circle class="cc-scheme-toggle__chip" cx="14" cy="29" r="2.4"></circle>
         </svg>
     </button>
     <?php

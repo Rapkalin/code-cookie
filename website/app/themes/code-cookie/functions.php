@@ -20,6 +20,7 @@ require_once get_template_directory() . '/inc/enums/MenuLocation.php'; // Menu l
 require_once get_template_directory() . '/inc/acf.php';                // ACF Pro: settings page and the single option reader.
 require_once get_template_directory() . '/inc/assets.php';             // Front-end stylesheet and script loading.
 require_once get_template_directory() . '/inc/breadcrumb.php';         // "Les miettes" — the breadcrumb trail.
+require_once get_template_directory() . '/inc/favicon.php';            // Brand icon served from the theme's assets.
 require_once get_template_directory() . '/inc/footer.php';             // Footer columns (from the footer menu) and the legal line.
 require_once get_template_directory() . '/inc/legacy-filters.php';     // Query rules carried over from the previous theme.
 require_once get_template_directory() . '/inc/pagination.php';           // "La fournée suivante" — archive pagination.

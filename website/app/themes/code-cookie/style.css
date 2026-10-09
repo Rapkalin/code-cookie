@@ -205,10 +205,28 @@ code, pre {
   cursor: pointer;
   padding: 0;
   color: var(--cc-caramel);
-  /* The bite is punched with the surrounding surface, so it follows the scheme. */
 }
-.cc-scheme-toggle .cc-bite {
+.cc-scheme-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+.cc-scheme-toggle {
+  /* The bite and the chips are punched with the button's own surface, so they
+     follow the scheme. */
+}
+.cc-scheme-toggle__bite, .cc-scheme-toggle__chip {
   fill: var(--cc-chip);
+}
+.cc-scheme-toggle {
+  /* The icon states what you are looking at: a whole cookie in light, a bitten
+     one — the crescent moon — in dark. */
+}
+.cc-scheme-toggle__bite {
+  display: none;
+}
+
+[data-scheme=dark] .cc-scheme-toggle__bite {
+  display: inline;
 }
 
 /* Shared by the header and the footer: one markup, one stylesheet. */
@@ -775,6 +793,21 @@ code, pre {
   cursor: pointer;
 }
 
+/* Article prose.
+   Links get their underline back here, and only here: the caramel contrasts
+   with the surrounding text at 1.68 in dark and 2.56 in light — far under the
+   3:1 that WCAG 1.4.1 demands when colour is the only cue. Navigation, cards
+   and buttons are standalone shapes, so they stay underline-free. */
+.entry-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+.entry-content a:hover,
+.entry-content a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
 /* "Les miettes" — the breadcrumb. */
 .cc-crumbs {
   display: flex;
@@ -822,6 +855,13 @@ code, pre {
   color: #1E2731;
 }
 
+/* The homepage closes on the full-bleed batch band, which must touch the footer.
+   A sibling selector cannot express it: the band sits inside <main> and the
+   footer after it, so they are not siblings. */
+.home .cc-footer {
+  margin-top: 0;
+}
+
 .cc-footer {
   background: var(--cc-plate);
   margin-top: 4rem;
@@ -851,10 +891,6 @@ code, pre {
   font-size: 1.125rem;
   font-weight: 700;
   margin: 0 0 0.8rem;
-  color: var(--cc-caramel-ink);
-}
-.cc-footer__col:nth-of-type(even) .cc-footer__col-title {
-  color: var(--cc-mint-ink);
 }
 .cc-footer__links {
   margin: 0;
@@ -876,4 +912,20 @@ code, pre {
   padding-block: 1.25rem;
   font-size: 0.875rem;
   color: var(--cc-ink-soft);
+}
+
+.cc-footer__col--caramel .cc-footer__col-title {
+  color: var(--cc-caramel-ink);
+}
+
+.cc-footer__col--orange .cc-footer__col-title {
+  color: var(--cc-orange-ink);
+}
+
+.cc-footer__col--earth .cc-footer__col-title {
+  color: var(--cc-earth-ink);
+}
+
+.cc-footer__col--mint .cc-footer__col-title {
+  color: var(--cc-mint-ink);
 }
