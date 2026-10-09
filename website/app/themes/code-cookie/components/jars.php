@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
         }
         $isSession = $kind === CookieKind::Session;
         ?>
-        <div class="cc-jar<?php echo $isSession ? ' cc-jar--session' : ''; ?>">
+        <div class="cc-jar <?php echo esc_attr($kind->flavour()->modifier('cc-jar')); ?>">
             <span class="cc-jar__icon" aria-hidden="true">
                 <?php if ($isSession) : ?>
                     <svg viewBox="0 0 76 76" focusable="false">

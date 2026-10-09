@@ -17,8 +17,10 @@ if (!defined('ABSPATH')) {
 require_once get_template_directory() . '/inc/enums/CookieKind.php';   // Editorial families: lasting articles vs quick tips.
 require_once get_template_directory() . '/inc/enums/Flavour.php';      // The four accent colours, one per topic.
 require_once get_template_directory() . '/inc/enums/MenuLocation.php'; // Menu locations the theme registers.
+require_once get_template_directory() . '/inc/acf.php';                // ACF Pro: settings page and the single option reader.
 require_once get_template_directory() . '/inc/assets.php';             // Front-end stylesheet and script loading.
 require_once get_template_directory() . '/inc/breadcrumb.php';         // "Les miettes" — the breadcrumb trail.
+require_once get_template_directory() . '/inc/footer.php';             // Footer columns (from the footer menu) and the legal line.
 require_once get_template_directory() . '/inc/legacy-filters.php';     // Query rules carried over from the previous theme.
 require_once get_template_directory() . '/inc/pagination.php';           // "La fournée suivante" — archive pagination.
 require_once get_template_directory() . '/inc/post-meta.php';          // Topic term, flavour and reading time.

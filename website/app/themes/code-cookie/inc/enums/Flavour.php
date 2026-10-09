@@ -4,6 +4,8 @@
  * The four accent colours. Each topic gets one, so a listing reads as a shelf of
  * flavours rather than a wall of identical cards.
  *
+ * This enum is the only place that turns a flavour into a CSS class.
+ *
  * @package code-cookie
  */
 
@@ -44,25 +46,12 @@ enum Flavour: string
         'forum' => self::Earth,
     ];
 
-    /** CSS modifier appended to a .cc-badge or .cc-cover class. */
-    public function modifier(): string
+    /**
+     * The BEM modifier for a block: modifier('cc-badge') => 'cc-badge--mint'.
+     */
+    public function modifier(string $block): string
     {
-        return match ($this) {
-            self::Caramel => '',
-            self::Orange => ' cc-badge--orange',
-            self::Earth => ' cc-badge--earth',
-            self::Mint => ' cc-badge--mint',
-        };
-    }
-
-    public function coverModifier(): string
-    {
-        return match ($this) {
-            self::Caramel => '',
-            self::Orange => ' cc-cover--orange',
-            self::Earth => ' cc-cover--earth',
-            self::Mint => ' cc-cover--mint',
-        };
+        return $block . '--' . $this->value;
     }
 
     public static function forTerm(?WP_Term $term): self

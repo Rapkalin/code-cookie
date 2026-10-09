@@ -24,7 +24,7 @@ while (have_posts()) :
     <article <?php post_class('cc-shell cc-prose'); ?>>
         <header>
             <p>
-                <span class="cc-badge<?php echo esc_attr($kind->badgeModifier()); ?>">
+                <span class="cc-badge <?php echo esc_attr($kind->flavour()->modifier('cc-badge')); ?>">
                     <?php echo esc_html($kind->label()); ?>
                 </span>
             </p>

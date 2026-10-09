@@ -1,0 +1,4 @@
+/* The four flavour names, quoted so Sass treats them as strings and not as the
+   CSS colour keyword `orange`. Mirrors the cases of the PHP Flavour enum: the
+   two lists must stay in step. */
+$names: "caramel", "orange", "earth", "mint";

@@ -23,6 +23,12 @@
   --cc-earth-ink: #E67D5E;
   --cc-mint-ink: #6FBF9B;
 
+  /* Cover tints: a muted bed behind the drawn cookie, one per flavour. */
+  --cc-caramel-tint: #4A3A22;
+  --cc-orange-tint: #4A3118;
+  --cc-earth-tint: #4A2E24;
+  --cc-mint-tint: #1E4438;
+
   --cc-radius: 22px;
   --cc-radius-sm: 16px;
   --cc-pill: 999px;
@@ -42,4 +48,9 @@
   --cc-orange-ink: #9A5410;
   --cc-earth-ink: #A8402A;
   --cc-mint-ink: #1F6B4E;
+
+  --cc-caramel-tint: #FBEBD2;
+  --cc-orange-tint: #FAE3CE;
+  --cc-earth-tint: #FAE0D7;
+  --cc-mint-tint: #DCEFE6;
 }

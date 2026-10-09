@@ -10,17 +10,35 @@
     padding-block: 2.75rem;
   }
 
-  &__col { flex: 0 1 180px; }
+  &__brand { flex: 1 1 300px; min-width: 0; }
 
-  &__col h2 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--cc-caramel-ink);
-    margin-bottom: 0.8rem;
+  &__tagline {
+    margin: 0.75rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--cc-ink-soft);
+    max-width: 36ch;
   }
 
-  &__col p { margin: 0 0 0.5rem; }
-  &__col a { color: var(--cc-ink); font-size: 0.9375rem; }
+  &__col { flex: 0 1 180px; }
+
+  &__col-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+    color: var(--cc-caramel-ink);
+  }
+
+  &__col:nth-of-type(even) &__col-title { color: var(--cc-mint-ink); }
+
+  &__links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li { margin-bottom: 0.5rem; }
+    a { color: var(--cc-ink); font-size: 0.9375rem; }
+  }
 
   &__legal {
     background: var(--cc-ground);

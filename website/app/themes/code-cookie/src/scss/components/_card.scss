@@ -1,3 +1,5 @@
+@use '../flavours';
+
 .cc-card {
   background: var(--cc-plate);
   border-radius: var(--cc-radius);
@@ -7,13 +9,8 @@
 
   &__cover {
     display: block;
-    background: var(--cc-caramel-tint, #4A3A22);
 
     img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
-
-    &--orange { background: #4A3118; }
-    &--earth { background: #4A2E24; }
-    &--mint { background: #1E4438; }
   }
 
   &__body {
@@ -41,16 +38,20 @@
   svg { width: 100%; height: auto; display: block; aspect-ratio: 2 / 1; }
 }
 
-.cc-cover__cookie { fill: var(--cc-caramel); }
 .cc-cover__chip { fill: var(--cc-ground); }
-.cc-cover__crumb { fill: var(--cc-caramel); opacity: 0.5; }
+.cc-cover__crumb { opacity: 0.5; }
 
-.cc-card__cover--orange .cc-cover__cookie,
-.cc-card__cover--orange .cc-cover__crumb { fill: var(--cc-orange); }
-.cc-card__cover--earth .cc-cover__cookie,
-.cc-card__cover--earth .cc-cover__crumb { fill: var(--cc-earth); }
-.cc-card__cover--mint .cc-cover__cookie,
-.cc-card__cover--mint .cc-cover__crumb { fill: var(--cc-mint); }
+/* One rule per flavour, generated from the same four names the PHP enum emits. */
+@each $flavour in flavours.$names {
+  .cc-card__cover--#{$flavour} {
+    background: var(--cc-#{$flavour}-tint);
+
+    .cc-cover__cookie,
+    .cc-cover__crumb { fill: var(--cc-#{$flavour}); }
+  }
+
+  .cc-badge--#{$flavour} { background: var(--cc-#{$flavour}); }
+}
 
 .cc-badge {
   align-self: flex-start;
@@ -63,9 +64,6 @@
   font-size: 0.875rem;
   font-weight: 700;
 
-  &--orange { background: var(--cc-orange); }
-  &--earth { background: var(--cc-earth); }
-  &--mint { background: var(--cc-mint); }
 }
 
 .cc-grid {

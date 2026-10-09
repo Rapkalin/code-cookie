@@ -32,11 +32,12 @@ enum CookieKind: string
         };
     }
 
-    public function badgeModifier(): string
+    /** Colour is owned by Flavour; a kind only says which one it wears. */
+    public function flavour(): Flavour
     {
         return match ($this) {
-            self::Persistent => '',
-            self::Session => ' cc-badge--mint',
+            self::Persistent => Flavour::Caramel,
+            self::Session => Flavour::Mint,
         };
     }
 

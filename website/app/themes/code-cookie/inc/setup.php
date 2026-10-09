@@ -36,7 +36,5 @@ function code_cookie_setup(): void
     add_theme_support('responsive-embeds');
     add_theme_support('wp-block-styles');
 
-    register_nav_menus([
-        MenuLocation::Primary->value => MenuLocation::Primary->label(),
-    ]);
+    register_nav_menus(MenuLocation::registry());
 }

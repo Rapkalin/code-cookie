@@ -15,7 +15,7 @@ $flavour = code_cookie_flavour($itemId);
 $topic = code_cookie_topic($itemId);
 ?>
 <article class="cc-session">
-    <span class="cc-session__time cc-badge<?php echo esc_attr($flavour->modifier()); ?>">
+    <span class="cc-session__time cc-badge <?php echo esc_attr($flavour->modifier('cc-badge')); ?>">
         <?php echo esc_html(code_cookie_reading_minutes($itemId)); ?>'
     </span>
     <div class="cc-session__body">

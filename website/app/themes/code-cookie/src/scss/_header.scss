@@ -10,20 +10,6 @@
     padding-block: 1.125rem;
   }
 
-  &__brand {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: var(--cc-ink);
-  }
-
-  &__wordmark {
-    font-family: var(--wp--preset--font-family--display);
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-
   &__nav {
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +38,17 @@
     padding: 0.55rem 1.125rem;
     line-height: 1.3;
   }
+}
+
+.cc-search input {
+  background: var(--cc-ground);
+  border: 2px solid var(--cc-rule-strong);
+  border-radius: var(--cc-pill);
+  color: var(--cc-ink);
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 0.9375rem;
+  padding: 0.6rem 1.125rem;
+  width: 10rem;
 }
 
 .cc-scheme-toggle {

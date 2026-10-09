@@ -31,6 +31,11 @@ Text Domain: code-cookie
   --cc-orange-ink: #EB8518;
   --cc-earth-ink: #E67D5E;
   --cc-mint-ink: #6FBF9B;
+  /* Cover tints: a muted bed behind the drawn cookie, one per flavour. */
+  --cc-caramel-tint: #4A3A22;
+  --cc-orange-tint: #4A3118;
+  --cc-earth-tint: #4A2E24;
+  --cc-mint-tint: #1E4438;
   --cc-radius: 22px;
   --cc-radius-sm: 16px;
   --cc-pill: 999px;
@@ -49,6 +54,10 @@ Text Domain: code-cookie
   --cc-orange-ink: #9A5410;
   --cc-earth-ink: #A8402A;
   --cc-mint-ink: #1F6B4E;
+  --cc-caramel-tint: #FBEBD2;
+  --cc-orange-tint: #FAE3CE;
+  --cc-earth-tint: #FAE0D7;
+  --cc-mint-tint: #DCEFE6;
 }
 
 *, *::before, *::after {
@@ -146,18 +155,6 @@ code, pre {
   justify-content: space-between;
   padding-block: 1.125rem;
 }
-.cc-header__brand {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--cc-ink);
-}
-.cc-header__wordmark {
-  font-family: var(--wp--preset--font-family--display);
-  font-size: 1.8rem;
-  font-weight: 800;
-  line-height: 1;
-}
 .cc-header__nav {
   display: flex;
   flex-wrap: wrap;
@@ -185,6 +182,17 @@ code, pre {
   line-height: 1.3;
 }
 
+.cc-search input {
+  background: var(--cc-ground);
+  border: 2px solid var(--cc-rule-strong);
+  border-radius: var(--cc-pill);
+  color: var(--cc-ink);
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 0.9375rem;
+  padding: 0.6rem 1.125rem;
+  width: 10rem;
+}
+
 .cc-scheme-toggle {
   background: var(--cc-chip);
   border: 0;
@@ -201,6 +209,49 @@ code, pre {
 }
 .cc-scheme-toggle .cc-bite {
   fill: var(--cc-chip);
+}
+
+/* Shared by the header and the footer: one markup, one stylesheet. */
+.cc-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--cc-ink);
+}
+.cc-brand:hover, .cc-brand:focus-visible {
+  color: var(--cc-ink);
+}
+.cc-brand__mark {
+  flex: 0 0 auto;
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+.cc-brand__dough {
+  fill: var(--cc-caramel);
+}
+.cc-brand__chip {
+  fill: var(--cc-plate);
+}
+.cc-brand__wordmark {
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.cc-brand .custom-logo {
+  max-height: 48px;
+  width: auto;
+}
+
+/* On the plate-coloured header the chips must read against the plate; in the
+   footer's legal strip the surface changes, so the chip follows the surface. */
+.cc-footer .cc-brand__mark {
+  width: 36px;
+  height: 36px;
+}
+.cc-footer .cc-brand__wordmark {
+  font-size: 1.4375rem;
 }
 
 .cc-button {
@@ -369,6 +420,9 @@ code, pre {
   text-align: center;
 }
 
+/* The four flavour names, quoted so Sass treats them as strings and not as the
+   CSS colour keyword `orange`. Mirrors the cases of the PHP Flavour enum: the
+   two lists must stay in step. */
 .cc-card {
   background: var(--cc-plate);
   border-radius: var(--cc-radius);
@@ -378,21 +432,11 @@ code, pre {
 }
 .cc-card__cover {
   display: block;
-  background: var(--cc-caramel-tint, #4A3A22);
 }
 .cc-card__cover img {
   width: 100%;
   aspect-ratio: 2/1;
   object-fit: cover;
-}
-.cc-card__cover--orange {
-  background: #4A3118;
-}
-.cc-card__cover--earth {
-  background: #4A2E24;
-}
-.cc-card__cover--mint {
-  background: #1E4438;
 }
 .cc-card__body {
   padding: 1.25rem 1.375rem 1.5rem;
@@ -426,32 +470,61 @@ code, pre {
   aspect-ratio: 2/1;
 }
 
-.cc-cover__cookie {
-  fill: var(--cc-caramel);
-}
-
 .cc-cover__chip {
   fill: var(--cc-ground);
 }
 
 .cc-cover__crumb {
-  fill: var(--cc-caramel);
   opacity: 0.5;
 }
 
+/* One rule per flavour, generated from the same four names the PHP enum emits. */
+.cc-card__cover--caramel {
+  background: var(--cc-caramel-tint);
+}
+.cc-card__cover--caramel .cc-cover__cookie,
+.cc-card__cover--caramel .cc-cover__crumb {
+  fill: var(--cc-caramel);
+}
+
+.cc-badge--caramel {
+  background: var(--cc-caramel);
+}
+
+.cc-card__cover--orange {
+  background: var(--cc-orange-tint);
+}
 .cc-card__cover--orange .cc-cover__cookie,
 .cc-card__cover--orange .cc-cover__crumb {
   fill: var(--cc-orange);
 }
 
+.cc-badge--orange {
+  background: var(--cc-orange);
+}
+
+.cc-card__cover--earth {
+  background: var(--cc-earth-tint);
+}
 .cc-card__cover--earth .cc-cover__cookie,
 .cc-card__cover--earth .cc-cover__crumb {
   fill: var(--cc-earth);
 }
 
+.cc-badge--earth {
+  background: var(--cc-earth);
+}
+
+.cc-card__cover--mint {
+  background: var(--cc-mint-tint);
+}
 .cc-card__cover--mint .cc-cover__cookie,
 .cc-card__cover--mint .cc-cover__crumb {
   fill: var(--cc-mint);
+}
+
+.cc-badge--mint {
+  background: var(--cc-mint);
 }
 
 .cc-badge {
@@ -464,15 +537,6 @@ code, pre {
   font-family: var(--wp--preset--font-family--display);
   font-size: 0.875rem;
   font-weight: 700;
-}
-.cc-badge--orange {
-  background: var(--cc-orange);
-}
-.cc-badge--earth {
-  background: var(--cc-earth);
-}
-.cc-badge--mint {
-  background: var(--cc-mint);
 }
 
 .cc-grid {
@@ -520,14 +584,8 @@ code, pre {
   height: 76px;
   display: block;
 }
-.cc-jar__fill {
-  fill: var(--cc-caramel);
-}
 .cc-jar__hole {
   fill: var(--cc-plate);
-}
-.cc-jar--session .cc-jar__fill {
-  fill: var(--cc-mint);
 }
 .cc-jar__body {
   min-width: 0;
@@ -535,10 +593,6 @@ code, pre {
 .cc-jar__title {
   font-size: 1.6875rem;
   margin: 0 0 0.4rem;
-  color: var(--cc-caramel-ink);
-}
-.cc-jar--session .cc-jar__title {
-  color: var(--cc-mint-ink);
 }
 .cc-jar__tagline {
   margin: 0 0 1rem;
@@ -553,7 +607,45 @@ code, pre {
   align-items: center;
   margin: 0;
 }
-.cc-jar--session .cc-jar__actions .cc-button {
+
+/* Same four names as the badges and the covers, same single source in PHP. */
+.cc-jar--caramel .cc-jar__fill {
+  fill: var(--cc-caramel);
+}
+.cc-jar--caramel .cc-jar__title {
+  color: var(--cc-caramel-ink);
+}
+.cc-jar--caramel .cc-button {
+  background: var(--cc-caramel);
+}
+
+.cc-jar--orange .cc-jar__fill {
+  fill: var(--cc-orange);
+}
+.cc-jar--orange .cc-jar__title {
+  color: var(--cc-orange-ink);
+}
+.cc-jar--orange .cc-button {
+  background: var(--cc-orange);
+}
+
+.cc-jar--earth .cc-jar__fill {
+  fill: var(--cc-earth);
+}
+.cc-jar--earth .cc-jar__title {
+  color: var(--cc-earth-ink);
+}
+.cc-jar--earth .cc-button {
+  background: var(--cc-earth);
+}
+
+.cc-jar--mint .cc-jar__fill {
+  fill: var(--cc-mint);
+}
+.cc-jar--mint .cc-jar__title {
+  color: var(--cc-mint-ink);
+}
+.cc-jar--mint .cc-button {
   background: var(--cc-mint);
 }
 
@@ -741,19 +833,38 @@ code, pre {
   justify-content: space-between;
   padding-block: 2.75rem;
 }
+.cc-footer__brand {
+  flex: 1 1 300px;
+  min-width: 0;
+}
+.cc-footer__tagline {
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-ink-soft);
+  max-width: 36ch;
+}
 .cc-footer__col {
   flex: 0 1 180px;
 }
-.cc-footer__col h2 {
+.cc-footer__col-title {
   font-size: 1.125rem;
   font-weight: 700;
+  margin: 0 0 0.8rem;
   color: var(--cc-caramel-ink);
-  margin-bottom: 0.8rem;
 }
-.cc-footer__col p {
-  margin: 0 0 0.5rem;
+.cc-footer__col:nth-of-type(even) .cc-footer__col-title {
+  color: var(--cc-mint-ink);
 }
-.cc-footer__col a {
+.cc-footer__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cc-footer__links li {
+  margin-bottom: 0.5rem;
+}
+.cc-footer__links a {
   color: var(--cc-ink);
   font-size: 0.9375rem;
 }

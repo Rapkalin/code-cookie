@@ -31,6 +31,7 @@ website/app/*
 
 #Plugins to ignore
 !website/app/plugins/
+website/app/plugins/advanced-custom-fields-pro
 website/app/plugins/advanced-accordion-block
 website/app/plugins/akismet
 website/app/plugins/code-syntax-block

@@ -1,0 +1,43 @@
+{
+  "key": "group_cc_footer",
+  "title": "Pied de page",
+  "fields": [
+    {
+      "key": "field_cc_footer_tagline",
+      "label": "Accroche",
+      "name": "footer_tagline",
+      "type": "textarea",
+      "instructions": "La phrase sous le logo du pied de page. Vide = le slogan du site (Réglages › Général).",
+      "required": 0,
+      "rows": 3,
+      "new_lines": ""
+    },
+    {
+      "key": "field_cc_footer_credit",
+      "label": "Mention de crédit",
+      "name": "footer_credit",
+      "type": "text",
+      "instructions": "Vient après « © 2026 Code Cookie — ». L'année et le nom du site sont automatiques.",
+      "required": 0,
+      "maxlength": 160,
+      "placeholder": "mitonné par Rapkalin et Noweh."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "code-cookie-settings"
+      }
+    ]
+  ],
+  "menu_order": 10,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "",
+  "modified": 1791600000
+}

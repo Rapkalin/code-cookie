@@ -14,7 +14,7 @@ $cardId = get_the_ID();
 $flavour = code_cookie_flavour($cardId);
 ?>
 <article <?php post_class('cc-card'); ?>>
-    <a class="cc-card__cover<?php echo esc_attr($flavour->coverModifier()); ?>"
+    <a class="cc-card__cover <?php echo esc_attr($flavour->modifier('cc-card__cover')); ?>"
        href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('medium_large', ['loading' => 'lazy', 'alt' => '']); ?>
@@ -33,7 +33,7 @@ $flavour = code_cookie_flavour($cardId);
     </a>
 
     <div class="cc-card__body">
-        <span class="cc-badge<?php echo esc_attr($flavour->modifier()); ?>">
+        <span class="cc-badge <?php echo esc_attr($flavour->modifier('cc-badge')); ?>">
             <?php echo esc_html(code_cookie_meta_line($cardId)); ?>
         </span>
 

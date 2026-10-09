@@ -1,0 +1,29 @@
+/* Shared by the header and the footer: one markup, one stylesheet. */
+.cc-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--cc-ink);
+
+  &:hover, &:focus-visible { color: var(--cc-ink); }
+
+  &__mark { flex: 0 0 auto; display: block; width: 44px; height: 44px; }
+  &__dough { fill: var(--cc-caramel); }
+  &__chip { fill: var(--cc-plate); }
+
+  &__wordmark {
+    font-family: var(--wp--preset--font-family--display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .custom-logo { max-height: 48px; width: auto; }
+}
+
+/* On the plate-coloured header the chips must read against the plate; in the
+   footer's legal strip the surface changes, so the chip follows the surface. */
+.cc-footer .cc-brand {
+  &__mark { width: 36px; height: 36px; }
+  &__wordmark { font-size: 1.4375rem; }
+}

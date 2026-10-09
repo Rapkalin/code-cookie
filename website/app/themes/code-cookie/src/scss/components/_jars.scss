@@ -1,3 +1,5 @@
+@use '../flavours';
+
 .cc-jars {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -18,24 +20,21 @@
   &__icon { flex: 0 0 auto; width: 76px; }
   &__icon svg { width: 76px; height: 76px; display: block; }
 
-  &__fill { fill: var(--cc-caramel); }
   &__hole { fill: var(--cc-plate); }
-
-  &--session &__fill { fill: var(--cc-mint); }
-
   &__body { min-width: 0; }
 
-  &__title {
-    font-size: 1.6875rem;
-    margin: 0 0 0.4rem;
-    color: var(--cc-caramel-ink);
-  }
-
-  &--session &__title { color: var(--cc-mint-ink); }
+  &__title { font-size: 1.6875rem; margin: 0 0 0.4rem; }
 
   &__tagline { margin: 0 0 1rem; font-size: 0.96875rem; line-height: 1.6; color: var(--cc-ink-soft); }
 
   &__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0; }
+}
 
-  &--session &__actions .cc-button { background: var(--cc-mint); }
+/* Same four names as the badges and the covers, same single source in PHP. */
+@each $flavour in flavours.$names {
+  .cc-jar--#{$flavour} {
+    .cc-jar__fill { fill: var(--cc-#{$flavour}); }
+    .cc-jar__title { color: var(--cc-#{$flavour}-ink); }
+    .cc-button { background: var(--cc-#{$flavour}); }
+  }
 }

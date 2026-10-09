@@ -13,19 +13,9 @@
 
 <header class="cc-header">
     <div class="cc-shell cc-header__inner">
-        <a class="cc-header__brand" href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-            <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-                <circle cx="22" cy="22" r="19" fill="#FBB04D"></circle>
-                <circle cx="15" cy="16" r="3.4" fill="currentColor"></circle>
-                <circle cx="29" cy="14.5" r="2.6" fill="currentColor"></circle>
-                <circle cx="24" cy="27" r="3.6" fill="currentColor"></circle>
-                <circle cx="32.5" cy="26" r="2.2" fill="currentColor"></circle>
-                <circle cx="14" cy="29" r="2.4" fill="currentColor"></circle>
-            </svg>
-            <span class="cc-header__wordmark"><?php bloginfo('name'); ?></span>
-        </a>
+        <?php get_template_part('components/brand'); ?>
 
-        <nav class="cc-header__nav" aria-label="<?php esc_attr_e('Navigation principale', 'code-cookie'); ?>">
+        <nav class="cc-header__nav" aria-label="<?php echo esc_attr(MenuLocation::Primary->label()); ?>">
             <?php
             wp_nav_menu([
                 'theme_location' => MenuLocation::Primary->value,
