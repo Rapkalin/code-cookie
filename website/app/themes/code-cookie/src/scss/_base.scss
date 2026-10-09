@@ -1,0 +1,55 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cc-ground);
+  color: var(--cc-ink);
+  font-family: var(--wp--preset--font-family--body);
+  font-size: var(--wp--preset--font-size--medium);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 800;
+  line-height: 1.12;
+  margin: 0;
+}
+
+a { color: var(--cc-accent-ink); text-decoration: none; }
+a:hover, a:focus-visible { color: var(--cc-ink); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+code, pre { font-family: var(--wp--preset--font-family--mono); }
+
+:focus-visible { outline: 3px solid var(--cc-caramel); outline-offset: 3px; }
+
+.cc-shell { max-width: 1140px; margin: 0 auto; padding-inline: 2rem; }
+.cc-prose { max-width: 760px; margin-inline: auto; }
+
+.screen-reader-text {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cc-skip-link {
+  position: absolute;
+  left: -9999px;
+
+  &:focus {
+    left: 1rem; top: 1rem;
+    z-index: 100;
+    background: var(--cc-caramel);
+    color: #1E2731;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--cc-pill);
+    font-weight: 700;
+  }
+}

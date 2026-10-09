@@ -1,0 +1,45 @@
+/* Semantic tokens. Dark is the default scheme; light is opt-in via
+   [data-scheme="light"], set client-side so a cached page still flips. */
+
+:root {
+  --cc-ground: #1E2731;
+  --cc-plate: #2E3844;
+  --cc-chip: #3A4654;
+  --cc-rule: #44515F;
+  --cc-rule-strong: #8094A6;
+  --cc-ink: #F2F5F7;
+  --cc-ink-soft: #A9B6C2;
+
+  --cc-caramel: #FBB04D;
+  --cc-orange: #EB8518;
+  --cc-earth: #E67D5E;
+  --cc-mint: #6FBF9B;
+
+  /* Flavours as TEXT: only the baked variants clear 4.5:1 on a light ground,
+     so each flavour carries a separate ink token. */
+  --cc-accent-ink: #FBB04D;
+  --cc-caramel-ink: #FBB04D;
+  --cc-orange-ink: #EB8518;
+  --cc-earth-ink: #E67D5E;
+  --cc-mint-ink: #6FBF9B;
+
+  --cc-radius: 22px;
+  --cc-radius-sm: 16px;
+  --cc-pill: 999px;
+}
+
+[data-scheme="light"] {
+  --cc-ground: #F0F1F2;
+  --cc-plate: #FFFFFF;
+  --cc-chip: #DFE3E7;
+  --cc-rule: #DFE3E7;
+  --cc-rule-strong: #556068;
+  --cc-ink: #1E2731;
+  --cc-ink-soft: #556068;
+
+  --cc-accent-ink: #8A5A12;
+  --cc-caramel-ink: #8A5A12;
+  --cc-orange-ink: #9A5410;
+  --cc-earth-ink: #A8402A;
+  --cc-mint-ink: #1F6B4E;
+}

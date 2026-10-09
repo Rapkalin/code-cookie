@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": false,
+    "useRootPaddingAwareAlignments": true,
+    "layout": { "contentSize": "760px", "wideSize": "1140px" },
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "link": true,
+      "text": true,
+      "background": true,
+      "heading": true,
+      "button": true,
+      "palette": [
+        { "slug": "ardoise", "color": "#1E2731", "name": "Ardoise" },
+        { "slug": "plaque", "color": "#2E3844", "name": "Plaque" },
+        { "slug": "pastille", "color": "#3A4654", "name": "Pastille" },
+        { "slug": "lait", "color": "#F2F5F7", "name": "Lait" },
+        { "slug": "buee", "color": "#A9B6C2", "name": "Buée" },
+        { "slug": "caramel", "color": "#FBB04D", "name": "Caramel" },
+        { "slug": "orange", "color": "#EB8518", "name": "Orange" },
+        { "slug": "terre", "color": "#E67D5E", "name": "Terre" },
+        { "slug": "menthe", "color": "#6FBF9B", "name": "Menthe" }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "fluid": true,
+      "fontFamilies": [
+        { "slug": "display", "name": "Display", "fontFamily": "\"Baloo 2\", system-ui, sans-serif" },
+        { "slug": "body", "name": "Texte", "fontFamily": "Karla, system-ui, sans-serif" },
+        { "slug": "mono", "name": "Code", "fontFamily": "\"JetBrains Mono\", ui-monospace, monospace" }
+      ],
+      "fontSizes": [
+        { "slug": "small", "size": "0.9rem", "name": "Petit" },
+        { "slug": "medium", "size": "1.0625rem", "name": "Normal" },
+        { "slug": "large", "size": "1.1875rem", "name": "Grand" },
+        { "slug": "x-large", "size": "1.75rem", "name": "Très grand" }
+      ]
+    },
+    "spacing": {
+      "customSpacingSize": false,
+      "units": ["rem", "%"],
+      "spacingSizes": [
+        { "slug": "20", "size": "0.75rem", "name": "1" },
+        { "slug": "40", "size": "1.5rem", "name": "2" },
+        { "slug": "60", "size": "2.5rem", "name": "3" },
+        { "slug": "80", "size": "4rem", "name": "4" }
+      ]
+    }
+  },
+  "styles": {
+    "color": { "background": "var(--cc-ground)", "text": "var(--cc-ink)" },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "var(--wp--preset--font-size--medium)",
+      "lineHeight": "1.7"
+    },
+    "elements": {
+      "link": { "color": { "text": "var(--cc-accent-ink)" } },
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontWeight": "800",
+          "lineHeight": "1.15"
+        }
+      }
+    }
+  }
+}

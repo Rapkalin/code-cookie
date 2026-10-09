@@ -1,0 +1,15 @@
+/* "Les miettes" — the breadcrumb. */
+.cc-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--cc-ink-soft);
+  padding-block: 1.25rem 0;
+
+  a { color: var(--cc-ink-soft); }
+  a:hover { color: var(--cc-ink); }
+
+  &__here { color: var(--cc-ink); }
+}

@@ -1,0 +1,358 @@
+@charset "UTF-8";
+/*!
+Theme Name: Code Cookie
+Theme URI: https://codecookie.fr
+Author: Rapkalin & Noweh
+Description: Thème maison de Code Cookie — blog de développement. Hybride : gabarits PHP, design piloté par theme.json.
+Version: 0.1.0
+Requires at least: 6.5
+Requires PHP: 8.2
+License: GPL-2.0-or-later
+Text Domain: code-cookie
+*/
+/* Semantic tokens. Dark is the default scheme; light is opt-in via
+   [data-scheme="light"], set client-side so a cached page still flips. */
+:root {
+  --cc-ground: #1E2731;
+  --cc-plate: #2E3844;
+  --cc-chip: #3A4654;
+  --cc-rule: #44515F;
+  --cc-rule-strong: #8094A6;
+  --cc-ink: #F2F5F7;
+  --cc-ink-soft: #A9B6C2;
+  --cc-caramel: #FBB04D;
+  --cc-orange: #EB8518;
+  --cc-earth: #E67D5E;
+  --cc-mint: #6FBF9B;
+  /* Flavours as TEXT: only the baked variants clear 4.5:1 on a light ground,
+     so each flavour carries a separate ink token. */
+  --cc-accent-ink: #FBB04D;
+  --cc-caramel-ink: #FBB04D;
+  --cc-orange-ink: #EB8518;
+  --cc-earth-ink: #E67D5E;
+  --cc-mint-ink: #6FBF9B;
+  --cc-radius: 22px;
+  --cc-radius-sm: 16px;
+  --cc-pill: 999px;
+}
+
+[data-scheme=light] {
+  --cc-ground: #F0F1F2;
+  --cc-plate: #FFFFFF;
+  --cc-chip: #DFE3E7;
+  --cc-rule: #DFE3E7;
+  --cc-rule-strong: #556068;
+  --cc-ink: #1E2731;
+  --cc-ink-soft: #556068;
+  --cc-accent-ink: #8A5A12;
+  --cc-caramel-ink: #8A5A12;
+  --cc-orange-ink: #9A5410;
+  --cc-earth-ink: #A8402A;
+  --cc-mint-ink: #1F6B4E;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cc-ground);
+  color: var(--cc-ink);
+  font-family: var(--wp--preset--font-family--body);
+  font-size: var(--wp--preset--font-size--medium);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 800;
+  line-height: 1.12;
+  margin: 0;
+}
+
+a {
+  color: var(--cc-accent-ink);
+  text-decoration: none;
+}
+
+a:hover, a:focus-visible {
+  color: var(--cc-ink);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+code, pre {
+  font-family: var(--wp--preset--font-family--mono);
+}
+
+:focus-visible {
+  outline: 3px solid var(--cc-caramel);
+  outline-offset: 3px;
+}
+
+.cc-shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-inline: 2rem;
+}
+
+.cc-prose {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cc-skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.cc-skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  background: var(--cc-caramel);
+  color: #1E2731;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--cc-pill);
+  font-weight: 700;
+}
+
+.cc-header {
+  background: var(--cc-plate);
+}
+.cc-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.125rem;
+}
+.cc-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--cc-ink);
+}
+.cc-header__wordmark {
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.cc-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: center;
+}
+.cc-header__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cc-header__nav a {
+  display: inline-block;
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--cc-ink);
+  background: var(--cc-chip);
+  border-radius: var(--cc-pill);
+  padding: 0.55rem 1.125rem;
+  line-height: 1.3;
+}
+
+.cc-scheme-toggle {
+  background: var(--cc-chip);
+  border: 0;
+  border-radius: var(--cc-pill);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  color: var(--cc-caramel);
+  /* The bite is punched with the surrounding surface, so it follows the scheme. */
+}
+.cc-scheme-toggle .cc-bite {
+  fill: var(--cc-chip);
+}
+
+.cc-card {
+  background: var(--cc-plate);
+  border-radius: var(--cc-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.cc-card__cover img {
+  width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+.cc-card__body {
+  padding: 1.25rem 1.375rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  flex: 1 1 auto;
+}
+.cc-card__title {
+  font-size: 1.4375rem;
+  line-height: 1.2;
+}
+.cc-card__title a {
+  color: var(--cc-ink);
+}
+.cc-card__excerpt {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cc-ink-soft);
+}
+
+.cc-badge {
+  align-self: flex-start;
+  display: inline-block;
+  background: var(--cc-caramel);
+  color: #1E2731;
+  border-radius: var(--cc-pill);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.cc-badge--orange {
+  background: var(--cc-orange);
+}
+.cc-badge--earth {
+  background: var(--cc-earth);
+}
+.cc-badge--mint {
+  background: var(--cc-mint);
+}
+
+.cc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .cc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .cc-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* "Les miettes" — the breadcrumb. */
+.cc-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--cc-ink-soft);
+  padding-block: 1.25rem 0;
+}
+.cc-crumbs a {
+  color: var(--cc-ink-soft);
+}
+.cc-crumbs a:hover {
+  color: var(--cc-ink);
+}
+.cc-crumbs__here {
+  color: var(--cc-ink);
+}
+
+.cc-pagination {
+  margin-block: 2.5rem;
+  text-align: center;
+}
+.cc-pagination ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cc-pagination .page-numbers {
+  display: inline-block;
+  min-width: 46px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--cc-pill);
+  background: var(--cc-chip);
+  color: var(--cc-ink);
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 700;
+}
+.cc-pagination .page-numbers.current {
+  background: var(--cc-caramel);
+  color: #1E2731;
+}
+
+.cc-footer {
+  background: var(--cc-plate);
+  margin-top: 4rem;
+}
+.cc-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+  padding-block: 2.75rem;
+}
+.cc-footer__col {
+  flex: 0 1 180px;
+}
+.cc-footer__col h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cc-caramel-ink);
+  margin-bottom: 0.8rem;
+}
+.cc-footer__col p {
+  margin: 0 0 0.5rem;
+}
+.cc-footer__col a {
+  color: var(--cc-ink);
+  font-size: 0.9375rem;
+}
+.cc-footer__legal {
+  background: var(--cc-ground);
+}
+.cc-footer__legal p {
+  margin: 0;
+  padding-block: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--cc-ink-soft);
+}

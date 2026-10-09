@@ -1,0 +1,11 @@
+{
+  "name": "code-cookie-theme",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.89.2"
+  },
+  "scripts": {
+    "build:css": "sass src/scss/style.scss:style.css --no-source-map --style=expanded",
+    "watch:css": "sass --watch src/scss/style.scss:style.css --no-source-map --style=expanded"
+  }
+}

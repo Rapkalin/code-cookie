@@ -1,0 +1,30 @@
+.cc-footer {
+  background: var(--cc-plate);
+  margin-top: 4rem;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    padding-block: 2.75rem;
+  }
+
+  &__col { flex: 0 1 180px; }
+
+  &__col h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--cc-caramel-ink);
+    margin-bottom: 0.8rem;
+  }
+
+  &__col p { margin: 0 0 0.5rem; }
+  &__col a { color: var(--cc-ink); font-size: 0.9375rem; }
+
+  &__legal {
+    background: var(--cc-ground);
+
+    p { margin: 0; padding-block: 1.25rem; font-size: 0.875rem; color: var(--cc-ink-soft); }
+  }
+}
