@@ -1,0 +1,79 @@
+.cc-hero {
+  background: var(--cc-plate);
+  padding-block: 3rem 3.5rem;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.75rem;
+    align-items: center;
+  }
+
+  &__body { flex: 999 1 420px; min-width: 0; }
+  &__art { flex: 1 1 320px; min-width: 0; display: flex; justify-content: center; }
+
+  &__flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+    background: var(--cc-caramel);
+    color: #1E2731;
+    border-radius: var(--cc-pill);
+    padding: 0.44rem 1rem;
+    font-family: var(--wp--preset--font-family--display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+
+  &__title {
+    font-size: clamp(2.25rem, 5vw, 3.625rem);
+    line-height: 1.05;
+    margin: 0 0 1.125rem;
+
+    a { color: var(--cc-ink); }
+  }
+
+  &__excerpt {
+    margin: 0 0 1.625rem;
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--cc-ink-soft);
+    max-width: 54ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__byline {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--cc-ink-soft);
+  }
+
+  &__avatar { border-radius: 50%; }
+}
+
+.cc-scene {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+
+  &__crumb { fill: var(--cc-rule); }
+  &__window { fill: var(--cc-ground); }
+  &__bar { fill: var(--cc-chip); }
+  &__line { fill: var(--cc-rule); }
+  &__cookie { fill: var(--cc-caramel); }
+  &__bite, &__chip { fill: var(--cc-plate); }
+
+  &__dot--caramel { fill: var(--cc-caramel); }
+  &__dot--earth { fill: var(--cc-earth); }
+  &__dot--mint { fill: var(--cc-mint); }
+}

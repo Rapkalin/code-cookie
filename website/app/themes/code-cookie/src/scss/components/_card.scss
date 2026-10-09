@@ -5,7 +5,16 @@
   display: flex;
   flex-direction: column;
 
-  &__cover img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+  &__cover {
+    display: block;
+    background: var(--cc-caramel-tint, #4A3A22);
+
+    img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+
+    &--orange { background: #4A3118; }
+    &--earth { background: #4A2E24; }
+    &--mint { background: #1E4438; }
+  }
 
   &__body {
     padding: 1.25rem 1.375rem 1.5rem;
@@ -24,6 +33,24 @@
 
   &__excerpt { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--cc-ink-soft); }
 }
+
+/* Drawn cover, shown when a post has no featured image. */
+.cc-cover__fallback {
+  display: block;
+
+  svg { width: 100%; height: auto; display: block; aspect-ratio: 2 / 1; }
+}
+
+.cc-cover__cookie { fill: var(--cc-caramel); }
+.cc-cover__chip { fill: var(--cc-ground); }
+.cc-cover__crumb { fill: var(--cc-caramel); opacity: 0.5; }
+
+.cc-card__cover--orange .cc-cover__cookie,
+.cc-card__cover--orange .cc-cover__crumb { fill: var(--cc-orange); }
+.cc-card__cover--earth .cc-cover__cookie,
+.cc-card__cover--earth .cc-cover__crumb { fill: var(--cc-earth); }
+.cc-card__cover--mint .cc-cover__cookie,
+.cc-card__cover--mint .cc-cover__crumb { fill: var(--cc-mint); }
 
 .cc-badge {
   align-self: flex-start;

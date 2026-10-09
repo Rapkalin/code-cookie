@@ -1,0 +1,21 @@
+.cc-section {
+  padding-block: 3.5rem 0;
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+
+  &__title {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    margin: 0 0 1.5rem;
+  }
+
+  &__head &__title { margin: 0; }
+
+  &__more { margin: 1.75rem 0 0; text-align: center; }
+}

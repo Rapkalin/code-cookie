@@ -4,7 +4,7 @@ Theme Name: Code Cookie
 Theme URI: https://codecookie.fr
 Author: Rapkalin & Noweh
 Description: Thème maison de Code Cookie — blog de développement. Hybride : gabarits PHP, design piloté par theme.json.
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 6.5
 Requires PHP: 8.2
 License: GPL-2.0-or-later
@@ -203,6 +203,172 @@ code, pre {
   fill: var(--cc-chip);
 }
 
+.cc-button {
+  display: inline-block;
+  background: var(--cc-caramel);
+  color: #1E2731;
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.2;
+  padding: 0.9rem 1.75rem;
+  border: 0;
+  border-radius: var(--cc-pill);
+  cursor: pointer;
+}
+.cc-button:hover, .cc-button:focus-visible {
+  color: #1E2731;
+  filter: brightness(1.08);
+}
+.cc-button--small {
+  font-size: 0.9375rem;
+  padding: 0.4rem 0.95rem;
+}
+.cc-button--ghost {
+  background: var(--cc-chip);
+  color: var(--cc-ink);
+}
+.cc-button--ghost:hover, .cc-button--ghost:focus-visible {
+  color: var(--cc-ink);
+}
+
+.cc-pill {
+  display: inline-block;
+  background: var(--cc-chip);
+  color: var(--cc-ink);
+  border-radius: var(--cc-pill);
+  padding: 0.375rem 0.85rem;
+  font-size: 0.875rem;
+}
+.cc-pill--link {
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  padding: 0.6rem 1.25rem;
+}
+
+.cc-hero {
+  background: var(--cc-plate);
+  padding-block: 3rem 3.5rem;
+}
+.cc-hero__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.75rem;
+  align-items: center;
+}
+.cc-hero__body {
+  flex: 999 1 420px;
+  min-width: 0;
+}
+.cc-hero__art {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+.cc-hero__flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  background: var(--cc-caramel);
+  color: #1E2731;
+  border-radius: var(--cc-pill);
+  padding: 0.44rem 1rem;
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.cc-hero__title {
+  font-size: clamp(2.25rem, 5vw, 3.625rem);
+  line-height: 1.05;
+  margin: 0 0 1.125rem;
+}
+.cc-hero__title a {
+  color: var(--cc-ink);
+}
+.cc-hero__excerpt {
+  margin: 0 0 1.625rem;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--cc-ink-soft);
+  max-width: 54ch;
+}
+.cc-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+  margin: 0;
+}
+.cc-hero__byline {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--cc-ink-soft);
+}
+.cc-hero__avatar {
+  border-radius: 50%;
+}
+
+.cc-scene {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+}
+.cc-scene__crumb {
+  fill: var(--cc-rule);
+}
+.cc-scene__window {
+  fill: var(--cc-ground);
+}
+.cc-scene__bar {
+  fill: var(--cc-chip);
+}
+.cc-scene__line {
+  fill: var(--cc-rule);
+}
+.cc-scene__cookie {
+  fill: var(--cc-caramel);
+}
+.cc-scene__bite, .cc-scene__chip {
+  fill: var(--cc-plate);
+}
+.cc-scene__dot--caramel {
+  fill: var(--cc-caramel);
+}
+.cc-scene__dot--earth {
+  fill: var(--cc-earth);
+}
+.cc-scene__dot--mint {
+  fill: var(--cc-mint);
+}
+
+.cc-section {
+  padding-block: 3.5rem 0;
+}
+.cc-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+.cc-section__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  margin: 0 0 1.5rem;
+}
+.cc-section__head .cc-section__title {
+  margin: 0;
+}
+.cc-section__more {
+  margin: 1.75rem 0 0;
+  text-align: center;
+}
+
 .cc-card {
   background: var(--cc-plate);
   border-radius: var(--cc-radius);
@@ -210,10 +376,23 @@ code, pre {
   display: flex;
   flex-direction: column;
 }
+.cc-card__cover {
+  display: block;
+  background: var(--cc-caramel-tint, #4A3A22);
+}
 .cc-card__cover img {
   width: 100%;
   aspect-ratio: 2/1;
   object-fit: cover;
+}
+.cc-card__cover--orange {
+  background: #4A3118;
+}
+.cc-card__cover--earth {
+  background: #4A2E24;
+}
+.cc-card__cover--mint {
+  background: #1E4438;
 }
 .cc-card__body {
   padding: 1.25rem 1.375rem 1.5rem;
@@ -234,6 +413,45 @@ code, pre {
   font-size: 0.9375rem;
   line-height: 1.55;
   color: var(--cc-ink-soft);
+}
+
+/* Drawn cover, shown when a post has no featured image. */
+.cc-cover__fallback {
+  display: block;
+}
+.cc-cover__fallback svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 2/1;
+}
+
+.cc-cover__cookie {
+  fill: var(--cc-caramel);
+}
+
+.cc-cover__chip {
+  fill: var(--cc-ground);
+}
+
+.cc-cover__crumb {
+  fill: var(--cc-caramel);
+  opacity: 0.5;
+}
+
+.cc-card__cover--orange .cc-cover__cookie,
+.cc-card__cover--orange .cc-cover__crumb {
+  fill: var(--cc-orange);
+}
+
+.cc-card__cover--earth .cc-cover__cookie,
+.cc-card__cover--earth .cc-cover__crumb {
+  fill: var(--cc-earth);
+}
+
+.cc-card__cover--mint .cc-cover__cookie,
+.cc-card__cover--mint .cc-cover__crumb {
+  fill: var(--cc-mint);
 }
 
 .cc-badge {
@@ -271,6 +489,198 @@ code, pre {
   .cc-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.cc-jars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-block: 3.75rem 0;
+}
+@media (max-width: 760px) {
+  .cc-jars {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cc-jar {
+  background: var(--cc-plate);
+  border-radius: var(--cc-radius);
+  padding: 1.875rem 2rem;
+  display: flex;
+  gap: 1.375rem;
+  align-items: flex-start;
+}
+.cc-jar__icon {
+  flex: 0 0 auto;
+  width: 76px;
+}
+.cc-jar__icon svg {
+  width: 76px;
+  height: 76px;
+  display: block;
+}
+.cc-jar__fill {
+  fill: var(--cc-caramel);
+}
+.cc-jar__hole {
+  fill: var(--cc-plate);
+}
+.cc-jar--session .cc-jar__fill {
+  fill: var(--cc-mint);
+}
+.cc-jar__body {
+  min-width: 0;
+}
+.cc-jar__title {
+  font-size: 1.6875rem;
+  margin: 0 0 0.4rem;
+  color: var(--cc-caramel-ink);
+}
+.cc-jar--session .cc-jar__title {
+  color: var(--cc-mint-ink);
+}
+.cc-jar__tagline {
+  margin: 0 0 1rem;
+  font-size: 0.96875rem;
+  line-height: 1.6;
+  color: var(--cc-ink-soft);
+}
+.cc-jar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+}
+.cc-jar--session .cc-jar__actions .cc-button {
+  background: var(--cc-mint);
+}
+
+.cc-sessions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 760px) {
+  .cc-sessions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cc-session {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--cc-plate);
+  border-radius: 18px;
+  padding: 1.125rem 1.375rem;
+}
+.cc-session__time {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 1rem;
+}
+.cc-session__body {
+  min-width: 0;
+}
+.cc-session__title {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  margin: 0 0 0.2rem;
+}
+.cc-session__title a {
+  color: var(--cc-ink);
+}
+.cc-session__topic {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cc-ink-soft);
+}
+
+.cc-batch {
+  margin-top: 4rem;
+  background: var(--cc-caramel);
+  color: #1E2731;
+}
+.cc-batch__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 2.75rem;
+}
+.cc-batch__pitch {
+  flex: 1 1 360px;
+  min-width: 0;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+.cc-batch__icon {
+  flex: 0 0 auto;
+  width: 70px;
+}
+.cc-batch__icon svg {
+  width: 70px;
+  height: 70px;
+  display: block;
+}
+.cc-batch__envelope {
+  fill: #1E2731;
+}
+.cc-batch__flap {
+  stroke: var(--cc-caramel);
+}
+.cc-batch__stamp {
+  fill: var(--cc-earth);
+}
+.cc-batch__title {
+  font-size: 1.9375rem;
+  margin: 0 0 0.375rem;
+  color: #1E2731;
+}
+.cc-batch__text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.cc-batch__form {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+.cc-batch__form input {
+  flex: 999 1 180px;
+  min-width: 0;
+  background: #FFFFFF;
+  border: 2px solid #1E2731;
+  border-radius: var(--cc-pill);
+  color: #1E2731;
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 1rem;
+  padding: 0.875rem 1.25rem;
+}
+.cc-batch__form button {
+  flex: 0 0 auto;
+  background: #1E2731;
+  color: var(--cc-caramel);
+  border: 0;
+  border-radius: var(--cc-pill);
+  font-family: var(--wp--preset--font-family--display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.875rem 1.75rem;
+  cursor: pointer;
 }
 
 /* "Les miettes" — the breadcrumb. */

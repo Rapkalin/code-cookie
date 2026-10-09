@@ -3,7 +3,7 @@ Theme Name: Code Cookie
 Theme URI: https://codecookie.fr
 Author: Rapkalin & Noweh
 Description: Thème maison de Code Cookie — blog de développement. Hybride : gabarits PHP, design piloté par theme.json.
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 6.5
 Requires PHP: 8.2
 License: GPL-2.0-or-later
@@ -13,7 +13,13 @@ Text Domain: code-cookie
 @use 'tokens';
 @use 'base';
 @use 'header';
+@use 'components/button';
+@use 'components/hero';
+@use 'components/section';
 @use 'components/card';
+@use 'components/jars';
+@use 'components/sessions';
+@use 'components/batch';
 @use 'components/crumbs';
 @use 'components/pagination';
 @use 'components/footer';

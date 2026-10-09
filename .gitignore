@@ -70,3 +70,6 @@ node_modules/
 
 # Docker : le .env racine est ignoré ci-dessus, l'exemple est versionné.
 !.env.example
+
+# Migration ponctuelle : tournée en local uniquement, la base migrée part en prod
+scripts/migrate-legacy-blocks.php
