@@ -102,7 +102,7 @@ foreach ([
  * reconciles an imported dump against — the production dump still names a theme
  * that no longer ships with this repository.
  */
-define('WP_DEFAULT_THEME', 'newsmatic-child');
+define('WP_DEFAULT_THEME', 'code-cookie');
 
 /**
  * Environment.

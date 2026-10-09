@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3479b52f1c209f373130907198cea81",
+    "content-hash": "eee4dfdb73d08c09e84a75455419ed33",
     "packages": [
         {
             "name": "composer/installers",
@@ -1034,24 +1034,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-ulike/"
-        },
-        {
-            "name": "wpackagist-theme/newsmatic",
-            "version": "1.2.14",
-            "source": {
-                "type": "svn",
-                "url": "https://themes.svn.wordpress.org/newsmatic/",
-                "reference": "1.2.14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/newsmatic.1.2.14.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/newsmatic/"
         }
     ],
     "packages-dev": [
