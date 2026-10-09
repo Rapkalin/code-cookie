@@ -31,7 +31,10 @@
 
     <div class="cc-footer__legal">
         <div class="cc-shell">
-            <p><?php echo esc_html(code_cookie_footer_legal()); ?></p>
+            <p>
+                <?php echo esc_html(code_cookie_footer_legal()); ?>
+                <?php code_cookie_version_tag(); ?>
+            </p>
         </div>
     </div>
 </footer>

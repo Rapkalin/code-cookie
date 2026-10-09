@@ -1,6 +1,7 @@
 {
     "name": "rapkalin/explain-code",
     "description": "Blog - explain code to me - by Noweh and Rapkalin",
+    "version": "2.0.0",
     "authors": [
         {
             "name": "Rapkalin",
@@ -11,56 +12,48 @@
             "email": "jschmitt95@protonmail.com"
         }
     ],
-
-    "repositories":[
+    "repositories": [
         {
-            "type":"composer",
-            "url":"https://wpackagist.org",
+            "type": "composer",
+            "url": "https://wpackagist.org",
             "only": [
                 "wpackagist-plugin/*",
                 "wpackagist-theme/*"
             ]
         }
     ],
-
     "require": {
         "php": ">=8.1",
         "johnpbloch/wordpress": "^6.3",
         "composer/installers": "~1.12",
         "vlucas/phpdotenv": "^5.5",
-
-
-        "wpackagist-plugin/w3-total-cache":"^2.4",
-        "wpackagist-plugin/advanced-accordion-block":"^4.6",
-        "wpackagist-plugin/code-syntax-block":"^3.1",
-        "wpackagist-plugin/dashboard-widgets-suite":"^3.4",
-        "wpackagist-plugin/hello-dolly":"^1.7",
-        "wpackagist-plugin/akismet":"^5.2",
-        "wpackagist-plugin/imagemagick-engine":"^1.7",
-        "wpackagist-plugin/wordpress-seo":"^21.0",
-        "wpackagist-plugin/jetpack":"^12.6-a",
-        "wpackagist-plugin/cookie-law-info":"^3.1",
+        "wpackagist-plugin/w3-total-cache": "^2.4",
+        "wpackagist-plugin/advanced-accordion-block": "^4.6",
+        "wpackagist-plugin/code-syntax-block": "^3.1",
+        "wpackagist-plugin/dashboard-widgets-suite": "^3.4",
+        "wpackagist-plugin/hello-dolly": "^1.7",
+        "wpackagist-plugin/akismet": "^5.2",
+        "wpackagist-plugin/imagemagick-engine": "^1.7",
+        "wpackagist-plugin/wordpress-seo": "^21.0",
+        "wpackagist-plugin/jetpack": "^12.6-a",
+        "wpackagist-plugin/cookie-law-info": "^3.1",
         "wpackagist-plugin/performance-lab": "^2.6",
         "wpackagist-plugin/wp-ulike": "^4.6",
-        "wpackagist-plugin/google-site-kit":"^1.108",
-        "wpackagist-plugin/svg-support":"^2.5",
-        "wpackagist-plugin/translatepress-multilingual":"^2.6",
-
+        "wpackagist-plugin/google-site-kit": "^1.108",
+        "wpackagist-plugin/svg-support": "^2.5",
+        "wpackagist-plugin/translatepress-multilingual": "^2.6",
         "ext-dom": "*",
         "ext-libxml": "*"
     },
-
     "require-dev": {
         "roave/security-advisories": "dev-latest",
         "symfony/var-dumper": "^6.3"
     },
-
     "autoload": {
         "psr-4": {
             "App\\": "website/app"
         }
     },
-
     "config": {
         "vendor-dir": "website/vendor",
         "allow-plugins": {
@@ -68,7 +61,6 @@
             "composer/installers": true
         }
     },
-
     "extra": {
         "wordpress-install-dir": "website/wordpress-core",
         "installer-paths": {

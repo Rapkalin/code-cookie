@@ -14,7 +14,9 @@ add_action('wp_enqueue_scripts', 'code_cookie_enqueue_assets');
 
 function code_cookie_enqueue_assets(): void
 {
-    $version = wp_get_theme()->get('Version');
+    // Cache busting follows the release, not a second number kept in the theme
+    // header: composer.json is the only place the version is written.
+    $version = code_cookie_version() ?: null;
 
     wp_enqueue_style('code-cookie', get_stylesheet_uri(), [], $version);
 

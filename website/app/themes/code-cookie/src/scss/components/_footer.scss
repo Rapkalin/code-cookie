@@ -54,3 +54,27 @@
 @each $flavour in flavours.$names {
   .cc-footer__col--#{$flavour} .cc-footer__col-title { color: var(--cc-#{$flavour}-ink); }
 }
+
+.cc-version {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.5rem;
+
+  &__number {
+    font-family: var(--wp--preset--font-family--mono);
+    font-size: 0.8125rem;
+  }
+
+  /* Only non-production environments carry a label, so it must stand out. */
+  &__env {
+    font-family: var(--wp--preset--font-family--mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--cc-earth);
+    color: #1E2731;
+    border-radius: var(--cc-pill);
+    padding: 0.1rem 0.5rem;
+  }
+}

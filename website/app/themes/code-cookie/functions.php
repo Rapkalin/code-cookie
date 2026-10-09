@@ -26,5 +26,6 @@ require_once get_template_directory() . '/inc/legacy-filters.php';     // Query 
 require_once get_template_directory() . '/inc/pagination.php';           // "La fournée suivante" — archive pagination.
 require_once get_template_directory() . '/inc/post-meta.php';          // Topic term, flavour and reading time.
 require_once get_template_directory() . '/inc/scheme.php';             // Light/dark switch, applied client-side so caching survives.
+require_once get_template_directory() . '/inc/version.php';            // Release version read from composer.json, shown in the footer.
 require_once get_template_directory() . '/inc/security.php';           // Front-end hardening.
 require_once get_template_directory() . '/inc/setup.php';              // Supports, translations, menu locations.
