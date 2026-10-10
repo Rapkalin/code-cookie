@@ -12,11 +12,13 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-$hero = new WP_Query([
-    'post_type' => 'post',
-    'posts_per_page' => 1,
-    'ignore_sticky_posts' => true,
-]);
+$featuredId = code_cookie_featured_post_id();
+$heroArgs = ['post_type' => 'post', 'posts_per_page' => 1, 'ignore_sticky_posts' => true];
+if ($featuredId !== 0) {
+    $heroArgs['p'] = $featuredId;
+}
+
+$hero = new WP_Query($heroArgs);
 
 $heroId = $hero->have_posts() ? $hero->posts[0]->ID : 0;
 
@@ -39,7 +41,9 @@ $fresh = new WP_Query([
 <?php if ($fresh->have_posts()) : ?>
     <section class="cc-shell cc-section">
         <div class="cc-section__head">
-            <h2 class="cc-section__title"><?php esc_html_e('Sorti du four', 'code-cookie'); ?></h2>
+            <h2 class="cc-section__title">
+                <?php echo esc_html(code_cookie_option('home_fresh_title', __('Sorti du four', 'code-cookie'))); ?>
+            </h2>
             <a class="cc-pill cc-pill--link" href="<?php echo esc_url(get_permalink(get_option('page_for_posts')) ?: home_url('/')); ?>">
                 <?php esc_html_e('Tout le bocal →', 'code-cookie'); ?>
             </a>
@@ -70,7 +74,9 @@ $sessions = new WP_Query([
 
 <?php if ($sessions->have_posts()) : ?>
     <section class="cc-shell cc-section">
-        <h2 class="cc-section__title"><?php esc_html_e('À grignoter en deux minutes', 'code-cookie'); ?></h2>
+        <h2 class="cc-section__title">
+            <?php echo esc_html(code_cookie_option('home_sessions_title', __('À grignoter en deux minutes', 'code-cookie'))); ?>
+        </h2>
 
         <div class="cc-sessions">
             <?php

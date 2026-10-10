@@ -42,8 +42,8 @@ if (!defined('ABSPATH')) {
             </span>
 
             <div class="cc-jar__body">
-                <h2 class="cc-jar__title"><?php echo esc_html($kind->label()); ?></h2>
-                <p class="cc-jar__tagline"><?php echo esc_html($kind->tagline()); ?></p>
+                <h2 class="cc-jar__title"><?php echo esc_html(code_cookie_kind_label($kind)); ?></h2>
+                <p class="cc-jar__tagline"><?php echo esc_html(code_cookie_kind_tagline($kind)); ?></p>
                 <p class="cc-jar__actions">
                     <span class="cc-pill">
                         <?php

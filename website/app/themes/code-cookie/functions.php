@@ -22,7 +22,9 @@ require_once get_template_directory() . '/inc/assets.php';             // Front-
 require_once get_template_directory() . '/inc/breadcrumb.php';         // "Les miettes" — the breadcrumb trail.
 require_once get_template_directory() . '/inc/favicon.php';            // Brand icon served from the theme's assets.
 require_once get_template_directory() . '/inc/footer.php';             // Footer columns (from the footer menu) and the legal line.
+require_once get_template_directory() . '/inc/home.php';                // Homepage helpers: the featured post slot.
 require_once get_template_directory() . '/inc/legacy-filters.php';     // Query rules carried over from the previous theme.
+require_once get_template_directory() . '/inc/kind.php';                // Editorial family names, with the contributed override.
 require_once get_template_directory() . '/inc/pagination.php';           // "La fournée suivante" — archive pagination.
 require_once get_template_directory() . '/inc/post-meta.php';          // Topic term, flavour and reading time.
 require_once get_template_directory() . '/inc/scheme.php';             // Light/dark switch, applied client-side so caching survives.

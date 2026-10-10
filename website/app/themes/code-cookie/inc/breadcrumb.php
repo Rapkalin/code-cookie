@@ -20,7 +20,7 @@ function code_cookie_crumbs(): void
 
     if (is_singular('post')) {
         $kind = CookieKind::forPost(get_the_ID());
-        $trail[] = ['label' => $kind->label(), 'url' => ''];
+        $trail[] = ['label' => code_cookie_kind_label($kind), 'url' => ''];
         $trail[] = ['label' => get_the_title(), 'url' => ''];
     } elseif (is_category() || is_tag()) {
         $trail[] = ['label' => single_term_title('', false), 'url' => ''];

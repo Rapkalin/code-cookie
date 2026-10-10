@@ -21,9 +21,11 @@ if (!defined('ABSPATH')) {
                 </svg>
             </span>
             <div>
-                <h2 class="cc-batch__title"><?php esc_html_e('Reçois la fournée', 'code-cookie'); ?></h2>
+                <h2 class="cc-batch__title">
+                    <?php echo esc_html(code_cookie_option('home_batch_title', __('Reçois la fournée', 'code-cookie'))); ?>
+                </h2>
                 <p class="cc-batch__text">
-                    <?php esc_html_e('Un courriel quand ça sort du four. Rien d’autre, promis.', 'code-cookie'); ?>
+                    <?php echo esc_html(code_cookie_option('home_batch_text', __('Un courriel quand ça sort du four. Rien d’autre, promis.', 'code-cookie'))); ?>
                 </p>
             </div>
         </div>

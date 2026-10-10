@@ -36,6 +36,18 @@ function code_cookie_register_options_page(): void
 }
 
 /**
+ * Read an option holding a post id, 0 when ACF is absent or the field is empty.
+ */
+function code_cookie_option_id(string $name): int
+{
+    if (!function_exists('get_field')) {
+        return 0;
+    }
+
+    return (int) get_field($name, 'option');
+}
+
+/**
  * Read a theme option, falling back when ACF is absent or the field is empty.
  */
 function code_cookie_option(string $name, string $fallback = ''): string

@@ -1,0 +1,113 @@
+{
+  "key": "group_cc_home",
+  "title": "Accueil",
+  "fields": [
+    {
+      "key": "field_cc_home_featured",
+      "label": "Article à la une",
+      "name": "home_featured_post",
+      "type": "post_object",
+      "instructions": "Le bloc « Tout chaud ». Vide = le dernier article publié.",
+      "required": 0,
+      "post_type": [
+        "post"
+      ],
+      "return_format": "id",
+      "multiple": 0,
+      "allow_null": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_cc_home_fresh_title",
+      "label": "Titre — derniers articles",
+      "name": "home_fresh_title",
+      "type": "text",
+      "instructions": "Vide = « Sorti du four ».",
+      "required": 0,
+      "maxlength": 60
+    },
+    {
+      "key": "field_cc_home_persistent_label",
+      "label": "Bocal 1 — nom",
+      "name": "home_persistent_label",
+      "type": "text",
+      "instructions": "Nom de la famille des articles de fond, utilisé aussi dans le fil d’Ariane. Vide = « Les persistants ».",
+      "required": 0,
+      "maxlength": 40
+    },
+    {
+      "key": "field_cc_home_persistent_tagline",
+      "label": "Bocal 1 — accroche",
+      "name": "home_persistent_tagline",
+      "type": "textarea",
+      "required": 0,
+      "rows": 2,
+      "new_lines": "",
+      "placeholder": "Les articles de fond. Ils restent après la fermeture de l’onglet."
+    },
+    {
+      "key": "field_cc_home_session_label",
+      "label": "Bocal 2 — nom",
+      "name": "home_session_label",
+      "type": "text",
+      "instructions": "Vide = « Les sessions ».",
+      "required": 0,
+      "maxlength": 40
+    },
+    {
+      "key": "field_cc_home_session_tagline",
+      "label": "Bocal 2 — accroche",
+      "name": "home_session_tagline",
+      "type": "textarea",
+      "required": 0,
+      "rows": 2,
+      "new_lines": "",
+      "placeholder": "Les astuces. Lues en deux minutes, croquées tant que c’est chaud."
+    },
+    {
+      "key": "field_cc_home_sessions_title",
+      "label": "Titre — astuces",
+      "name": "home_sessions_title",
+      "type": "text",
+      "instructions": "Vide = « À grignoter en deux minutes ».",
+      "required": 0,
+      "maxlength": 60
+    },
+    {
+      "key": "field_cc_home_batch_title",
+      "label": "Bandeau infolettre — titre",
+      "name": "home_batch_title",
+      "type": "text",
+      "instructions": "Vide = « Reçois la fournée ».",
+      "required": 0,
+      "maxlength": 60
+    },
+    {
+      "key": "field_cc_home_batch_text",
+      "label": "Bandeau infolettre — texte",
+      "name": "home_batch_text",
+      "type": "textarea",
+      "required": 0,
+      "rows": 2,
+      "new_lines": "",
+      "placeholder": "Un courriel quand ça sort du four. Rien d’autre, promis."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "code-cookie-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "",
+  "modified": 1791700000
+}

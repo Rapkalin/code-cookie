@@ -25,7 +25,7 @@ while (have_posts()) :
         <header>
             <p>
                 <span class="cc-badge <?php echo esc_attr($kind->flavour()->modifier('cc-badge')); ?>">
-                    <?php echo esc_html($kind->label()); ?>
+                    <?php echo esc_html(code_cookie_kind_label($kind)); ?>
                 </span>
             </p>
             <h1><?php the_title(); ?></h1>
