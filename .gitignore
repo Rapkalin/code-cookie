@@ -33,7 +33,6 @@ website/app/*
 !website/app/plugins/
 website/app/plugins/advanced-custom-fields-pro
 website/app/plugins/akismet
-website/app/plugins/performance-lab
 website/app/plugins/w3-total-cache
 website/app/plugins/svg-support
 

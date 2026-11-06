@@ -4,7 +4,7 @@
 
   ul { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
 
-  .page-numbers {
+  li > .page-numbers {
     display: inline-block;
     min-width: 46px;
     padding: 0.6rem 1rem;
@@ -15,5 +15,5 @@
     font-weight: 700;
   }
 
-  .page-numbers.current { background: var(--cc-caramel); color: #1E2731; }
+  li > .page-numbers.current { background: var(--cc-caramel); color: #1E2731; }
 }

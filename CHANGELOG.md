@@ -23,8 +23,22 @@ tag Git de la mise en production. `bin/release.sh` tient les trois en phase.
   ni intégration tierce, le site ne dépose plus aucun cookie soumis à
   consentement. Restent le choix clair/sombre (posé au clic) et les cookies de
   commentaire (case à cocher native de WordPress).
+- **Performance Lab** : ses modules utiles sont dans le cœur (`fetchpriority`)
+  ou repris par le thème (WebP). La couleur dominante affichée pendant le
+  chargement des images disparaît.
 
 ### Changed
+- **WordPress 6.7.1 → 7.1.4**, base mise à niveau (db_version 61833),
+  traductions françaises du cœur et des extensions rafraîchies.
+  `composer/installers` 1.12 → 2.3, `vlucas/phpdotenv` 5.8, akismet 5.7.2,
+  svg-support 2.6.3.
+- **Les tailles intermédiaires des JPEG envoyés sont générées en WebP** par le
+  thème (filtre natif `image_editor_output_format`, `inc/images.php`).
+- **Métadonnées des médias migrées vers leurs copies WebP** (143 médias,
+  538 tailles) : Performance Lab substituait le WebP au rendu, sans lui les
+  gabarits servaient les JPEG, trois à sept fois plus lourds. Opération faite
+  en base locale, qui part en production ; les fichiers JPEG restent sur le
+  disque.
 - **Coloration du code reprise par le thème** (Prism 1.30.0, chargé seulement
   sur un contenu qui a un bloc de code), mêmes couleurs qu'avant, police
   JetBrains Mono du thème. L'attribut `lang` invalide des blocs est retiré au
@@ -36,6 +50,8 @@ tag Git de la mise en production. `bin/release.sh` tient les trois en phase.
 - `scripts/import-db.php` et `scripts/import-prod-db-for-preprod.php`
   désactivaient la première extension active (ACF Pro) quand Jetpack était
   absent de la base.
+- **Pagination des listes** : le cœur pose aussi la classe `page-numbers` sur
+  la liste, qui prenait le style d'une pastille et empilait les numéros.
 
 ## [2.0.0] - 2026-10-09
 

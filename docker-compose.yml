@@ -25,7 +25,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
       args:
-        # Voir l'en-tête du Dockerfile : 8.3 tant que le cœur est en 6.7.1.
+        # Plancher exigé par composer.json, voir l'en-tête du Dockerfile.
         PHP_VERSION: ${PHP_VERSION:-8.4}
     image: code-cookie-app:local
     container_name: code-cookie-php

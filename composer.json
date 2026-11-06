@@ -24,12 +24,11 @@
     ],
     "require": {
         "php": ">=8.4",
-        "johnpbloch/wordpress": "^6.3",
-        "composer/installers": "~1.12",
-        "vlucas/phpdotenv": "^5.5",
+        "johnpbloch/wordpress": "^7.1",
+        "composer/installers": "^2.3",
+        "vlucas/phpdotenv": "^5.8",
         "wpackagist-plugin/w3-total-cache": "^2.4",
         "wpackagist-plugin/akismet": "^5.2",
-        "wpackagist-plugin/performance-lab": "^2.6",
         "wpackagist-plugin/svg-support": "^2.5",
         "ext-dom": "*",
         "ext-libxml": "*"

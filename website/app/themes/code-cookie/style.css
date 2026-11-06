@@ -1027,7 +1027,7 @@ pre.wp-block-code code {
   padding: 0;
   list-style: none;
 }
-.cc-pagination .page-numbers {
+.cc-pagination li > .page-numbers {
   display: inline-block;
   min-width: 46px;
   padding: 0.6rem 1rem;
@@ -1037,7 +1037,7 @@ pre.wp-block-code code {
   font-family: var(--wp--preset--font-family--display);
   font-weight: 700;
 }
-.cc-pagination .page-numbers.current {
+.cc-pagination li > .page-numbers.current {
   background: var(--cc-caramel);
   color: #1E2731;
 }

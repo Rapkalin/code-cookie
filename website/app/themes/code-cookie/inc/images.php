@@ -10,6 +10,21 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+add_filter('image_editor_output_format', 'code_cookie_webp_sub_sizes');
+
+/**
+ * Resized copies of uploaded JPEGs are written as WebP.
+ *
+ * @param array<string, string> $formats
+ * @return array<string, string>
+ */
+function code_cookie_webp_sub_sizes(array $formats): array
+{
+    $formats['image/jpeg'] = 'image/webp';
+
+    return $formats;
+}
+
 /**
  * Whether a post has a featured image that will actually render.
  *
