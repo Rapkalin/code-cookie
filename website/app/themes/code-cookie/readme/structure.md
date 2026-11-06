@@ -5,7 +5,7 @@ code-cookie/
 ├── style.css         GÉNÉRÉ — sortie compilée du SCSS (en-tête WP + styles)
 ├── theme.json        Jetons de design, version 3, et bridage de l'éditeur
 ├── functions.php     Point d'entrée : uniquement des require_once de inc/
-├── package.json      sass en devDependency, build:css / watch:css
+├── package.json      sass et prismjs en devDependency, build:css / watch:css / build:prism
 ├── header.php footer.php
 ├── index.php         Repli : accueil et archives sans gabarit plus précis
 ├── single.php page.php archive.php search.php 404.php comments.php
@@ -16,6 +16,7 @@ code-cookie/
 │   │   └── MenuLocation.php   Emplacements de menu
 │   ├── assets.php             Chargement de la feuille et du script
 │   ├── breadcrumb.php         « Les miettes »
+│   ├── code-blocks.php        Nettoyage du balisage des blocs de code
 │   ├── legacy-filters.php     Règles de requête reprises de l'ancien thème
 │   ├── pagination.php         « La fournée suivante »
 │   ├── scheme.php             Switch clair/sombre, appliqué côté client
@@ -23,6 +24,7 @@ code-cookie/
 │   └── setup.php              Supports, traductions, emplacements de menu
 ├── components/card.php
 ├── assets/js/scheme.js
+├── assets/js/prism.js GÉNÉRÉ — npm run build:prism
 └── src/scss/        sources SCSS — voir readme/styles.md
 ```
 

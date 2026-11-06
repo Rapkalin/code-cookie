@@ -20,6 +20,26 @@ job Node. Sans le fichier compilé au dépôt, le site déployé n'aurait aucun 
 > seule source de vérité. L'en-tête de thème vit dans `style.scss` (`/*! … */`)
 > et survit à la compilation, donc l'ignorer ne pose pas de problème d'identité.
 
+## Coloration du code
+
+Les blocs `core/code` sont colorés par [Prism](https://prismjs.com),
+**versionné et regroupé** dans `assets/js/prism.js`. Il n'est chargé que sur un
+contenu qui contient un bloc de code (`inc/assets.php`). Les couleurs des jetons
+vivent dans `src/scss/components/_code.scss`.
+
+```
+npm run build:prism   # node_modules/prismjs -> assets/js/prism.js
+```
+
+Le paquet ne porte que les langages présents dans les articles : PHP, Bash,
+YAML, PowerShell, JSON, Java, JavaScript, Apache. **Un article qui en
+introduit un autre restera en texte brut** tant que son composant n'est pas
+ajouté à la liste de `build:prism`, avec ses dépendances (l'ordre compte : voir
+`require` dans `node_modules/prismjs/components.json`).
+
+Les blocs enregistrés portent un `lang="php"` hérité de l'ancienne extension :
+`inc/code-blocks.php` le retire au rendu, car `lang` attend une langue humaine.
+
 ## Jetons sémantiques et bascule de thème
 
 `_tokens.scss` déclare des variables CSS sur `:root` pour le mode **sombre**, qui

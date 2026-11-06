@@ -16,8 +16,10 @@ get_header();
 <div class="cc-shell">
     <?php code_cookie_crumbs(); ?>
 
-    <h1><?php echo esc_html(get_the_archive_title()); ?></h1>
+    <h1 class="cc-section__title"><?php echo wp_kses_post(get_the_archive_title()); ?></h1>
     <?php the_archive_description('<p class="cc-card__excerpt">', '</p>'); ?>
+
+    <?php get_template_part('components/category-filters'); ?>
 
     <?php if (have_posts()) : ?>
         <div class="cc-grid">

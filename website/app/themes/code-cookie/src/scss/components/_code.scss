@@ -1,0 +1,58 @@
+/* Token colours (a11y-dark) are only legible on this dark ground — every one
+   clears 7:1 against #2b2b2b. Keep the block dark in the light scheme too. */
+pre.wp-block-code {
+  background: #2b2b2b;
+  color: #f8f8f2;
+  overflow: auto;
+  tab-size: 4;
+
+  code {
+    font-family: var(--wp--preset--font-family--mono);
+    padding-left: 0;
+    white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-height: 1.5;
+  }
+}
+
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata { color: #d4d0ab; }
+
+  &.punctuation { color: #fefefe; }
+
+  &.property,
+  &.tag,
+  &.constant,
+  &.symbol,
+  &.deleted { color: #ffa07a; }
+
+  &.selector,
+  &.attr-name,
+  &.string,
+  &.char,
+  &.builtin,
+  &.inserted { color: #abe338; }
+
+  &.boolean,
+  &.number,
+  &.operator,
+  &.entity,
+  &.url,
+  &.variable,
+  &.keyword { color: #00e0e0; }
+
+  &.atrule,
+  &.attr-value,
+  &.function,
+  &.regex,
+  &.important { color: #ffd700; }
+
+  &.important,
+  &.bold { font-weight: bold; }
+
+  &.italic { font-style: italic; }
+}

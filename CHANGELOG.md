@@ -11,6 +11,32 @@ tag Git de la mise en production. `bin/release.sh` tient les trois en phase.
 
 ## [Unreleased]
 
+### Removed
+- **Ménage des extensions** : jetpack, wp-ulike, google-site-kit, hello-dolly,
+  dashboard-widgets-suite, imagemagick-engine, code-syntax-block,
+  advanced-accordion-block, et les inactives translatepress-multilingual et
+  wordpress-seo. Leurs tables, options et tâches cron sont purgées de la base.
+  Perdus : les 24 votes wp-ulike, les boutons de partage et la visionneuse de
+  galerie Jetpack, les statistiques Jetpack et Google Analytics (Site Kit).
+  Le plan du site passe au natif de WordPress (`/wp-sitemap.xml`).
+- **Bandeau de consentement CookieYes** (cookie-law-info) : sans statistiques
+  ni intégration tierce, le site ne dépose plus aucun cookie soumis à
+  consentement. Restent le choix clair/sombre (posé au clic) et les cookies de
+  commentaire (case à cocher native de WordPress).
+
+### Changed
+- **Coloration du code reprise par le thème** (Prism 1.30.0, chargé seulement
+  sur un contenu qui a un bloc de code), mêmes couleurs qu'avant, police
+  JetBrains Mono du thème. L'attribut `lang` invalide des blocs est retiré au
+  rendu.
+- **Les intégrations YouTube deviennent un lien** « Regarder … sur YouTube » :
+  l'iframe déposait des traceurs avant tout clic.
+
+### Fixed
+- `scripts/import-db.php` et `scripts/import-prod-db-for-preprod.php`
+  désactivaient la première extension active (ACF Pro) quand Jetpack était
+  absent de la base.
+
 ## [2.0.0] - 2026-10-09
 
 Refonte complète du site autour de l'identité Code Cookie. **Version majeure :

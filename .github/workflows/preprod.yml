@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 8.1 ]
+        php: [ 8.4 ]
 
     steps:
       - name: checkout preprod-code
@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
+          php_version: ${{ matrix.php }}
           dev: no
           args: --prefer-dist --no-interaction
 

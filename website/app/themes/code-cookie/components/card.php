@@ -16,19 +16,10 @@ $flavour = code_cookie_flavour($cardId);
 <article <?php post_class('cc-card'); ?>>
     <a class="cc-card__cover <?php echo esc_attr($flavour->modifier('cc-card__cover')); ?>"
        href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
-        <?php if (has_post_thumbnail()) : ?>
+        <?php if (code_cookie_has_usable_thumbnail($cardId)) : ?>
             <?php the_post_thumbnail('medium_large', ['loading' => 'lazy', 'alt' => '']); ?>
         <?php else : ?>
-            <span class="cc-cover__fallback" aria-hidden="true">
-                <svg viewBox="0 0 320 160" focusable="false">
-                    <circle cx="160" cy="80" r="46" class="cc-cover__cookie"></circle>
-                    <circle cx="143" cy="66" r="8" class="cc-cover__chip"></circle>
-                    <circle cx="176" cy="71" r="6" class="cc-cover__chip"></circle>
-                    <circle cx="160" cy="97" r="9" class="cc-cover__chip"></circle>
-                    <circle cx="261" cy="46" r="9" class="cc-cover__crumb"></circle>
-                    <circle cx="56" cy="112" r="7" class="cc-cover__crumb"></circle>
-                </svg>
-            </span>
+            <?php get_template_part('components/cover-fallback'); ?>
         <?php endif; ?>
     </a>
 

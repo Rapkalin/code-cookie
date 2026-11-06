@@ -26,7 +26,7 @@ services:
       dockerfile: docker/php/Dockerfile
       args:
         # Voir l'en-tête du Dockerfile : 8.3 tant que le cœur est en 6.7.1.
-        PHP_VERSION: ${PHP_VERSION:-8.3}
+        PHP_VERSION: ${PHP_VERSION:-8.4}
     image: code-cookie-app:local
     container_name: code-cookie-php
     restart: unless-stopped

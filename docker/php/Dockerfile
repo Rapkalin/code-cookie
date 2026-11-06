@@ -6,12 +6,10 @@
 #
 # Le code n'est PAS copié dans l'image : docker-compose bind-monte le projet.
 #
-# PHP_VERSION est un argument de build : la valeur par défaut est celle qui
-# fait tourner le composer.lock ACTUEL (WordPress 6.7.1). Elle sera à monter en
-# 8.4 une fois le cœur et les extensions mis à jour, et après avoir vérifié le
-# PHP réellement disponible sur le serveur cible.
+# PHP_VERSION est un argument de build : la valeur par défaut est le plancher
+# exigé par composer.json, aligné sur le PHP disponible chez l'hébergeur (IONOS).
 # =============================================================================
-ARG PHP_VERSION=8.3
+ARG PHP_VERSION=8.4
 FROM php:${PHP_VERSION}-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

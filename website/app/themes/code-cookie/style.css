@@ -5,7 +5,7 @@ Theme URI: https://codecookie.fr
 Author: Rapkalin & Noweh
 Description: Thème maison de Code Cookie — blog de développement. Hybride : gabarits PHP, design piloté par theme.json.
 Requires at least: 6.5
-Requires PHP: 8.2
+Requires PHP: 8.4
 License: GPL-2.0-or-later
 Text Domain: code-cookie
 */
@@ -160,7 +160,7 @@ code, pre {
   gap: 0.625rem;
   align-items: center;
 }
-.cc-header__nav ul {
+.cc-header__nav > ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
@@ -168,6 +168,9 @@ code, pre {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.cc-header__nav li {
+  position: relative;
 }
 .cc-header__nav a {
   display: inline-block;
@@ -180,7 +183,67 @@ code, pre {
   padding: 0.55rem 1.125rem;
   line-height: 1.3;
 }
+.cc-header {
+  /* A parent with children wears a chevron drawn in CSS, so no extra markup. */
+}
+.cc-header__nav .menu-item-has-children > a::after {
+  content: "";
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-left: 0.5em;
+  vertical-align: 0.14em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.cc-header__nav .sub-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 20;
+  display: none;
+  min-width: 13rem;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+  background: var(--cc-chip);
+  border-radius: var(--cc-radius-sm);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+.cc-header {
+  /* Opens on hover for a pointer, on focus for a keyboard. */
+}
+.cc-header__nav li:hover > .sub-menu, .cc-header__nav li:focus-within > .sub-menu {
+  display: block;
+}
+.cc-header__nav .sub-menu a {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border-radius: 0.6rem;
+  font-size: 0.9375rem;
+  padding: 0.45rem 0.75rem;
+}
+.cc-header__nav .sub-menu a:hover, .cc-header__nav .sub-menu a:focus-visible {
+  background: var(--cc-plate);
+  color: var(--cc-ink);
+}
 
+/* No hover on a touch screen: the submenu unfolds in place instead of floating. */
+@media (max-width: 860px) {
+  .cc-header__nav .sub-menu {
+    position: static;
+    display: block;
+    min-width: 0;
+    padding: 0.35rem 0 0 0.75rem;
+    background: transparent;
+    box-shadow: none;
+  }
+  .cc-header__nav .menu-item-has-children > a::after {
+    display: none;
+  }
+}
 .cc-search input {
   background: var(--cc-ground);
   border: 2px solid var(--cc-rule-strong);
@@ -476,23 +539,22 @@ code, pre {
   color: var(--cc-ink-soft);
 }
 
-/* Drawn cover, shown when a post has no featured image. */
-.cc-cover__fallback {
+/* Drawn cover, shown when a post has no usable featured image. Same ratio as a
+   real thumbnail so a mixed row never jumps. */
+.cc-cover {
   display: block;
 }
-.cc-cover__fallback svg {
+.cc-cover svg {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   aspect-ratio: 2/1;
 }
-
 .cc-cover__chip {
   fill: var(--cc-ground);
 }
-
 .cc-cover__crumb {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 /* One rule per flavour, generated from the same four names the PHP enum emits. */
@@ -502,6 +564,12 @@ code, pre {
 .cc-card__cover--caramel .cc-cover__cookie,
 .cc-card__cover--caramel .cc-cover__crumb {
   fill: var(--cc-caramel);
+}
+.cc-card__cover--caramel {
+  /* The bite is punched with the bed behind it, so it reads as a bite. */
+}
+.cc-card__cover--caramel .cc-cover__bite {
+  fill: var(--cc-caramel-tint);
 }
 
 .cc-badge--caramel {
@@ -515,6 +583,12 @@ code, pre {
 .cc-card__cover--orange .cc-cover__crumb {
   fill: var(--cc-orange);
 }
+.cc-card__cover--orange {
+  /* The bite is punched with the bed behind it, so it reads as a bite. */
+}
+.cc-card__cover--orange .cc-cover__bite {
+  fill: var(--cc-orange-tint);
+}
 
 .cc-badge--orange {
   background: var(--cc-orange);
@@ -527,6 +601,12 @@ code, pre {
 .cc-card__cover--earth .cc-cover__crumb {
   fill: var(--cc-earth);
 }
+.cc-card__cover--earth {
+  /* The bite is punched with the bed behind it, so it reads as a bite. */
+}
+.cc-card__cover--earth .cc-cover__bite {
+  fill: var(--cc-earth-tint);
+}
 
 .cc-badge--earth {
   background: var(--cc-earth);
@@ -538,6 +618,12 @@ code, pre {
 .cc-card__cover--mint .cc-cover__cookie,
 .cc-card__cover--mint .cc-cover__crumb {
   fill: var(--cc-mint);
+}
+.cc-card__cover--mint {
+  /* The bite is punched with the bed behind it, so it reads as a bite. */
+}
+.cc-card__cover--mint .cc-cover__bite {
+  fill: var(--cc-mint-tint);
 }
 
 .cc-badge--mint {
@@ -570,6 +656,63 @@ code, pre {
   .cc-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.cc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+}
+
+.cc-filter {
+  display: inline-block;
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 0.5rem 1.05rem;
+  border-radius: var(--cc-pill);
+  border: 2px solid var(--cc-rule);
+  color: var(--cc-ink);
+}
+.cc-filter:hover, .cc-filter:focus-visible {
+  color: var(--cc-ink);
+}
+.cc-filter {
+  /* The active filter is filled, so it does not rely on colour alone. */
+}
+.cc-filter[aria-current=page] {
+  color: #1E2731;
+  border-color: transparent;
+}
+
+.cc-filter--caramel:hover, .cc-filter--caramel:focus-visible {
+  border-color: var(--cc-caramel);
+}
+.cc-filter--caramel[aria-current=page] {
+  background: var(--cc-caramel);
+}
+
+.cc-filter--orange:hover, .cc-filter--orange:focus-visible {
+  border-color: var(--cc-orange);
+}
+.cc-filter--orange[aria-current=page] {
+  background: var(--cc-orange);
+}
+
+.cc-filter--earth:hover, .cc-filter--earth:focus-visible {
+  border-color: var(--cc-earth);
+}
+.cc-filter--earth[aria-current=page] {
+  background: var(--cc-earth);
+}
+
+.cc-filter--mint:hover, .cc-filter--mint:focus-visible {
+  border-color: var(--cc-mint);
+}
+.cc-filter--mint[aria-current=page] {
+  background: var(--cc-mint);
 }
 
 .cc-jars {
@@ -805,6 +948,51 @@ code, pre {
 .entry-content a:hover,
 .entry-content a:focus-visible {
   text-decoration-thickness: 2px;
+}
+.entry-content .cc-button {
+  text-decoration: none;
+}
+
+/* Token colours (a11y-dark) are only legible on this dark ground — every one
+   clears 7:1 against #2b2b2b. Keep the block dark in the light scheme too. */
+pre.wp-block-code {
+  background: #2b2b2b;
+  color: #f8f8f2;
+  overflow: auto;
+  tab-size: 4;
+}
+pre.wp-block-code code {
+  font-family: var(--wp--preset--font-family--mono);
+  padding-left: 0;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-height: 1.5;
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #d4d0ab;
+}
+.token.punctuation {
+  color: #fefefe;
+}
+.token.property, .token.tag, .token.constant, .token.symbol, .token.deleted {
+  color: #ffa07a;
+}
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+  color: #abe338;
+}
+.token.boolean, .token.number, .token.operator, .token.entity, .token.url, .token.variable, .token.keyword {
+  color: #00e0e0;
+}
+.token.atrule, .token.attr-value, .token.function, .token.regex, .token.important {
+  color: #ffd700;
+}
+.token.important, .token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
 }
 
 /* "Les miettes" — the breadcrumb. */

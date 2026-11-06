@@ -154,11 +154,11 @@ d'atteindre le relais. Le greffon ne s'active pas en production.
 
 ## Version de PHP
 
-L'image est construite en **PHP 8.3**, valeur par défaut de l'argument
-`PHP_VERSION` (surchargeable dans le `.env`). C'est la version qui couvre le
-`composer.lock` actuel, figé sur WordPress 6.7.1. À monter en 8.4 une fois le
-cœur et les extensions mis à jour — et après avoir vérifié le PHP réellement
-servi par l'hébergeur, qui n'est pas forcément celui de sa ligne de commande.
+L'image est construite en **PHP 8.4**, valeur par défaut de l'argument
+`PHP_VERSION` (surchargeable dans le `.env`). C'est le plancher exigé par
+`composer.json` (`"php": ">=8.4"`), aligné sur la version proposée par IONOS.
+Vérifier le PHP réellement servi par l'hébergeur, qui n'est pas forcément celui
+de sa ligne de commande.
 
 ## Pièges déjà rencontrés
 

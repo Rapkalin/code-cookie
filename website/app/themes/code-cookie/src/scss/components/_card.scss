@@ -31,15 +31,21 @@
   &__excerpt { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--cc-ink-soft); }
 }
 
-/* Drawn cover, shown when a post has no featured image. */
-.cc-cover__fallback {
+/* Drawn cover, shown when a post has no usable featured image. Same ratio as a
+   real thumbnail so a mixed row never jumps. */
+.cc-cover {
   display: block;
 
-  svg { width: 100%; height: auto; display: block; aspect-ratio: 2 / 1; }
-}
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+  }
 
-.cc-cover__chip { fill: var(--cc-ground); }
-.cc-cover__crumb { opacity: 0.5; }
+  &__chip { fill: var(--cc-ground); }
+  &__crumb { opacity: 0.55; }
+}
 
 /* One rule per flavour, generated from the same four names the PHP enum emits. */
 @each $flavour in flavours.$names {
@@ -48,6 +54,9 @@
 
     .cc-cover__cookie,
     .cc-cover__crumb { fill: var(--cc-#{$flavour}); }
+
+    /* The bite is punched with the bed behind it, so it reads as a bite. */
+    .cc-cover__bite { fill: var(--cc-#{$flavour}-tint); }
   }
 
   .cc-badge--#{$flavour} { background: var(--cc-#{$flavour}); }

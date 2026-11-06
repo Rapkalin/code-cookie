@@ -52,8 +52,7 @@ if (file_exists($filename)) {
         $stmt = $pdo->query('SELECT * FROM wp_options WHERE option_name="active_plugins"');
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $active_plugins = unserialize($result["option_value"]);
-        unset($active_plugins[array_search("jetpack/jetpack.php", $active_plugins)]);
-        $active_plugins = array_values($active_plugins);
+        $active_plugins = array_values(array_diff($active_plugins, ["jetpack/jetpack.php"]));
         $serialized_array = serialize($active_plugins);
 
         $stmt = $pdo->prepare('UPDATE wp_options SET option_value = replace(option_value, ?, ?) WHERE option_name = "active_plugins";');

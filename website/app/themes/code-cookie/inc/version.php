@@ -41,14 +41,23 @@ function code_cookie_version(): string
 }
 
 /**
+ * An unset WP_ENV counts as production: never advertise an environment name, and
+ * never loosen caching, on a stack whose nature is unknown.
+ */
+function code_cookie_is_production(): bool
+{
+    $environment = defined('WP_ENV') ? (string) WP_ENV : '';
+
+    return $environment === '' || in_array($environment, CODE_COOKIE_SILENT_ENVIRONMENTS, true);
+}
+
+/**
  * The environment name, or an empty string on production where it says nothing
  * a visitor needs.
  */
 function code_cookie_environment(): string
 {
-    $environment = defined('WP_ENV') ? (string) WP_ENV : '';
-
-    return in_array($environment, CODE_COOKIE_SILENT_ENVIRONMENTS, true) ? '' : $environment;
+    return code_cookie_is_production() ? '' : (string) WP_ENV;
 }
 
 function code_cookie_version_tag(): void

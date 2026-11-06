@@ -32,21 +32,10 @@ website/app/*
 #Plugins to ignore
 !website/app/plugins/
 website/app/plugins/advanced-custom-fields-pro
-website/app/plugins/advanced-accordion-block
 website/app/plugins/akismet
-website/app/plugins/code-syntax-block
-website/app/plugins/cookie-law-info
-website/app/plugins/dashboard-widgets-suite
-website/app/plugins/hello-dolly
-website/app/plugins/imagemagick-engine
-website/app/plugins/jetpack
 website/app/plugins/performance-lab
 website/app/plugins/w3-total-cache
-website/app/plugins/wordpress-seo
-website/app/plugins/wp-ulike
-website/app/plugins/google-site-kit
 website/app/plugins/svg-support
-website/app/plugins/translatepress-multilingual
 
 
 # Global gitignore setup

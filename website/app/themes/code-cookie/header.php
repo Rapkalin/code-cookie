@@ -20,7 +20,7 @@
             wp_nav_menu([
                 'theme_location' => MenuLocation::Primary->value,
                 'container' => false,
-                'depth' => 1,
+                'depth' => 2,
                 'fallback_cb' => false,
             ]);
             get_search_form();

@@ -2,10 +2,12 @@
   "name": "code-cookie-theme",
   "private": true,
   "devDependencies": {
+    "prismjs": "1.30.0",
     "sass": "^1.89.2"
   },
   "scripts": {
     "build:css": "sass src/scss/style.scss:style.css --no-source-map --style=expanded",
-    "watch:css": "sass --watch src/scss/style.scss:style.css --no-source-map --style=expanded"
+    "watch:css": "sass --watch src/scss/style.scss:style.css --no-source-map --style=expanded",
+    "build:prism": "cd node_modules/prismjs/components && cat prism-core.min.js prism-markup.min.js prism-clike.min.js prism-javascript.min.js prism-markup-templating.min.js prism-php.min.js prism-bash.min.js prism-yaml.min.js prism-powershell.min.js prism-json.min.js prism-java.min.js prism-apacheconf.min.js > ../../../assets/js/prism.js"
   }
 }

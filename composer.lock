@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eee4dfdb73d08c09e84a75455419ed33",
+    "content-hash": "89b83dce5e433961e689b810dce5b0da",
     "packages": [
         {
             "name": "composer/installers",
@@ -766,24 +766,6 @@
             "time": "2024-07-20T21:52:34+00:00"
         },
         {
-            "name": "wpackagist-plugin/advanced-accordion-block",
-            "version": "4.7.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/advanced-accordion-block/",
-                "reference": "tags/4.7.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/advanced-accordion-block.4.7.4.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/advanced-accordion-block/"
-        },
-        {
             "name": "wpackagist-plugin/akismet",
             "version": "5.3.5",
             "source": {
@@ -800,132 +782,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/akismet/"
-        },
-        {
-            "name": "wpackagist-plugin/code-syntax-block",
-            "version": "3.2.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/code-syntax-block/",
-                "reference": "tags/3.2.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/code-syntax-block.3.2.1.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/code-syntax-block/"
-        },
-        {
-            "name": "wpackagist-plugin/cookie-law-info",
-            "version": "3.2.8",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/cookie-law-info/",
-                "reference": "tags/3.2.8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cookie-law-info.3.2.8.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/cookie-law-info/"
-        },
-        {
-            "name": "wpackagist-plugin/dashboard-widgets-suite",
-            "version": "3.4.7",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/dashboard-widgets-suite/",
-                "reference": "tags/3.4.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/dashboard-widgets-suite.3.4.7.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/dashboard-widgets-suite/"
-        },
-        {
-            "name": "wpackagist-plugin/google-site-kit",
-            "version": "1.142.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/google-site-kit/",
-                "reference": "tags/1.142.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-site-kit.1.142.0.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/google-site-kit/"
-        },
-        {
-            "name": "wpackagist-plugin/hello-dolly",
-            "version": "1.7.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/hello-dolly/",
-                "reference": "tags/1.7.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hello-dolly.1.7.3.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/hello-dolly/"
-        },
-        {
-            "name": "wpackagist-plugin/imagemagick-engine",
-            "version": "1.7.13",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/imagemagick-engine/",
-                "reference": "tags/1.7.13"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imagemagick-engine.1.7.13.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/imagemagick-engine/"
-        },
-        {
-            "name": "wpackagist-plugin/jetpack",
-            "version": "12.9.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/12.9.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.12.9.4.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/jetpack/"
         },
         {
             "name": "wpackagist-plugin/performance-lab",
@@ -964,24 +820,6 @@
             "homepage": "https://wordpress.org/plugins/svg-support/"
         },
         {
-            "name": "wpackagist-plugin/translatepress-multilingual",
-            "version": "2.9.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/translatepress-multilingual/",
-                "reference": "tags/2.9.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.3.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/translatepress-multilingual/"
-        },
-        {
             "name": "wpackagist-plugin/w3-total-cache",
             "version": "2.8.2",
             "source": {
@@ -998,42 +836,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/w3-total-cache/"
-        },
-        {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "21.9.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/21.9.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.21.9.1.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-ulike",
-            "version": "4.7.6",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-ulike/",
-                "reference": "tags/4.7.6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-ulike.4.7.6.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-ulike/"
         }
     ],
     "packages-dev": [
@@ -2048,13 +1850,12 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "wpackagist-plugin/jetpack": 15
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1",
+        "php": ">=8.4",
         "ext-dom": "*",
         "ext-libxml": "*"
     },

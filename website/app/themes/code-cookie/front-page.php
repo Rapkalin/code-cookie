@@ -44,7 +44,8 @@ $fresh = new WP_Query([
             <h2 class="cc-section__title">
                 <?php echo esc_html(code_cookie_option('home_fresh_title', __('Sorti du four', 'code-cookie'))); ?>
             </h2>
-            <a class="cc-pill cc-pill--link" href="<?php echo esc_url(get_permalink(get_option('page_for_posts')) ?: home_url('/')); ?>">
+            <?php $blogId = (int) get_option('page_for_posts'); ?>
+            <a class="cc-pill cc-pill--link" href="<?php echo esc_url($blogId !== 0 ? (string) get_permalink($blogId) : home_url('/')); ?>">
                 <?php esc_html_e('Tout le bocal →', 'code-cookie'); ?>
             </a>
         </div>
