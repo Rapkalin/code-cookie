@@ -28,6 +28,11 @@ tag Git de la mise en production. `bin/release.sh` tient les trois en phase.
   chargement des images disparaît.
 
 ### Changed
+- **PHP 8.5** (depuis 8.3, en passant par 8.4 sans entrée ici) : plancher de
+  `composer.json`, `config.platform.php` épinglé à 8.5.12, image Docker,
+  workflows. Prérequis des modules `rapkalin-*`. Aucune dépréciation du cœur,
+  du thème, d'ACF Pro, d'Akismet ni de svg-support ; seul W3 Total Cache en
+  lève, et il est remplacé à l'étape suivante.
 - **WordPress 6.7.1 → 7.1.4**, base mise à niveau (db_version 61833),
   traductions françaises du cœur et des extensions rafraîchies.
   `composer/installers` 1.12 → 2.3, `vlucas/phpdotenv` 5.8, akismet 5.7.2,

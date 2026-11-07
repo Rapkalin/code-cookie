@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.5",
         "johnpbloch/wordpress": "^7.1",
         "composer/installers": "^2.3",
         "vlucas/phpdotenv": "^5.8",
@@ -47,6 +47,9 @@
         "allow-plugins": {
             "johnpbloch/wordpress-core-installer": true,
             "composer/installers": true
+        },
+        "platform": {
+            "php": "8.5.12"
         }
     },
     "extra": {

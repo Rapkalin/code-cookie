@@ -9,7 +9,7 @@
 # PHP_VERSION est un argument de build : la valeur par défaut est le plancher
 # exigé par composer.json, aligné sur le PHP disponible chez l'hébergeur (IONOS).
 # =============================================================================
-ARG PHP_VERSION=8.4
+ARG PHP_VERSION=8.5
 FROM php:${PHP_VERSION}-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -29,9 +29,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # gd avec webp et freetype : les sous-tailles d'images du blog en dépendent.
-# ⚠️ L'extension imagick n'est PAS installée : l'extension imagemagick-engine du
-# site se rabat alors sur GD, ce qui ne change que la qualité des miniatures
-# REGÉNÉRÉES en local — les médias déjà produits en production sont intacts.
+# OPcache est compilé dans PHP depuis 8.5 : l'ajouter à la liste fait échouer
+# le build (« cannot stat 'modules/*' »).
 RUN docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j"$(nproc)" \
@@ -41,8 +40,7 @@ RUN docker-php-ext-configure intl \
         zip \
         intl \
         gd \
-        exif \
-        opcache
+        exif
 
 # Tout mail sortant part vers Mailpit, jamais vers Internet. Un dump de
 # production contient de vraies adresses d'abonnés : sans cette ligne, PHP
@@ -74,8 +72,14 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # WP-CLI : le wp-cli.phar versionné à la racine du dépôt date de 2023 et n'est
 # pas repris ici — l'image prend la version courante.
-RUN curl -fsSL -o /usr/local/bin/wp \
+# Son code embarqué lève des dépréciations PHP 8.5 AVANT le démarrage de
+# WordPress, sur la sortie standard : bin/init.sh capture cette sortie et lisait
+# le message à la place du nom du thème. Le wrapper les masque ; une fois
+# WordPress chargé, WP_DEBUG rétablit error_reporting et les nôtres remontent.
+RUN curl -fsSL -o /usr/local/bin/wp-cli.phar \
         https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && printf '#!/bin/sh\nexec php -d "error_reporting=E_ALL & ~E_DEPRECATED" /usr/local/bin/wp-cli.phar "$@"\n' \
+        > /usr/local/bin/wp \
     && chmod +x /usr/local/bin/wp
 
 # MySQL 8.4 présente un certificat auto-signé, et le client mariadb vérifie la

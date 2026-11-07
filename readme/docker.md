@@ -154,11 +154,25 @@ d'atteindre le relais. Le greffon ne s'active pas en production.
 
 ## Version de PHP
 
-L'image est construite en **PHP 8.4**, valeur par défaut de l'argument
+L'image est construite en **PHP 8.5**, valeur par défaut de l'argument
 `PHP_VERSION` (surchargeable dans le `.env`). C'est le plancher exigé par
-`composer.json` (`"php": ">=8.4"`), aligné sur la version proposée par IONOS.
+`composer.json` (`"php": ">=8.5"`), et celui des modules `rapkalin-*`.
 Vérifier le PHP réellement servi par l'hébergeur, qui n'est pas forcément celui
 de sa ligne de commande.
+
+- **`config.platform.php` = `8.5.12`** : Composer résout pour cette version, quel
+  que soit le PHP de la machine qui lance `composer update`. Pas en dessous :
+  `roave/security-advisories` refuse PHP 8.5 avant la 8.5.12 (failles connues),
+  et c'est la version constatée chez IONOS en ligne de commande. Construire
+  l'image avec `docker compose build --pull php` pour suivre les correctifs de
+  l'image de base.
+- **OPcache est compilé dans PHP depuis 8.5** : il ne figure plus dans
+  `docker-php-ext-install`, où il ferait échouer le build.
+- **`wp` est un wrapper** autour de `/usr/local/bin/wp-cli.phar`. WP-CLI 2.12
+  lève des dépréciations PHP 8.5 avant le démarrage de WordPress, sur la sortie
+  standard : `bin/init.sh`, qui capture cette sortie, prenait le message pour le
+  nom du thème. Le wrapper masque les `E_DEPRECATED` à ce stade ; `WP_DEBUG`
+  rétablit le niveau complet une fois WordPress chargé.
 
 ## Pièges déjà rencontrés
 
